@@ -144,6 +144,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scripts\Map\MapManager.cs" />
     <Compile Include="Assets\Scripts\Scenes\Renderers\SceneMenuRenderer.cs" />
+    <Compile Include="Assets\Scripts\Map\MapBuilder.cs" />
     <Compile Include="Assets\Scripts\Game\Models\GameTimeModel.cs" />
     <Compile Include="Assets\Scripts\Game\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\Bootstrap.cs" />

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Game.UI
 {
-    public class BuildingInfoRenderer : MonoBehaviour
+    public class BuildingRenderer : MonoBehaviour
     {
         public Action OnDeleteBuildingButtonClicked;
 

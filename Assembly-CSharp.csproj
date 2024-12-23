@@ -88,11 +88,11 @@
     <Compile Include="Assets\Scripts\Map\MapInstaller.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\UI\BottomMenu\Renderers\ActionsRenderer.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Renderers\BuildingRenderer.cs" />
     <Compile Include="Assets\Scripts\Map\Models\MapModel.cs" />
     <Compile Include="Assets\Scripts\Map\Components\PathFinder.cs" />
     <Compile Include="Assets\Scripts\Core\Extentions\ListExtension.cs" />
     <Compile Include="Assets\ExternalResources\Cainos\Pixel Art Top Down - Basic\Script\LayerTrigger.cs" />
-    <Compile Include="Assets\Scripts\Buildings\Renderers\BuildingInfoRenderer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />

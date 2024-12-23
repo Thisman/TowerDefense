@@ -8,7 +8,7 @@ public class UIInstaller : MonoInstaller
     private Game.UI.ActionsRenderer _actionsRenderer;
 
     [SerializeField]
-    private Game.UI.BuildingInfoRenderer _buildingInfoRenderer;
+    private Game.UI.BuildingRenderer _buildingInfoRenderer;
 
     public override void InstallBindings()
     {
@@ -16,7 +16,7 @@ public class UIInstaller : MonoInstaller
             .FromInstance(_actionsRenderer)
             .AsSingle();
 
-        Container.Bind<BuildingInfoRenderer>()
+        Container.Bind<BuildingRenderer>()
             .FromInstance(_buildingInfoRenderer)
             .AsSingle();
     }

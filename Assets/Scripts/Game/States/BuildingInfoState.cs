@@ -27,7 +27,7 @@ namespace Game.States
         private FSM _gameStates;
 
         [Inject]
-        private BuildingInfoRenderer _buildingInfoRenderer;
+        private BuildingRenderer _buildingRenderer;
 
         [Inject]
         private MapModel _mapModel;
@@ -46,13 +46,13 @@ namespace Game.States
         {
             _data = data;
 
-            _buildingInfoRenderer.OnDeleteBuildingButtonClicked += HandleDeleteBuilding;
+            _buildingRenderer.OnDeleteBuildingButtonClicked += HandleDeleteBuilding;
             BuildingTemplate template = _data.Tower.GetComponent<BuildingModel>()?.Template;
 
             if (template != null)
             {
-                _buildingInfoRenderer.Render(template);
-                _buildingInfoRenderer.Show();
+                _buildingRenderer.Render(template);
+                _buildingRenderer.Show();
             }
         }
 
@@ -65,8 +65,8 @@ namespace Game.States
 
         public void Exit()
         {
-            _buildingInfoRenderer.OnDeleteBuildingButtonClicked -= HandleDeleteBuilding;
-            _buildingInfoRenderer.Hide();
+            _buildingRenderer.OnDeleteBuildingButtonClicked -= HandleDeleteBuilding;
+            _buildingRenderer.Hide();
         }
 
         public BuildingInfoStateData GetData()

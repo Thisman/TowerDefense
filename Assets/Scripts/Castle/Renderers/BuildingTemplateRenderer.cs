@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildingCardRenderer : MonoBehaviour
+public class BuildingTemplateRenderer : MonoBehaviour
 {
     public Action<BuildingTemplate> OnClicked;
 

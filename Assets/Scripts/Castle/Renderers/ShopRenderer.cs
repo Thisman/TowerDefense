@@ -54,7 +54,7 @@ namespace Game.Castle
             foreach (var buildingTemplate in _shopModel.Buildings)
             {
                 GameObject card = GameObject.Instantiate(_buildingCardPrefab, _shopPanelUI.transform);
-                BuildingCardRenderer cardRenderer = card.GetComponent<BuildingCardRenderer>();
+                BuildingTemplateRenderer cardRenderer = card.GetComponent<BuildingTemplateRenderer>();
                 cardRenderer.Render(buildingTemplate);
                 cardRenderer.OnClicked += HandleCardClicked;
             }

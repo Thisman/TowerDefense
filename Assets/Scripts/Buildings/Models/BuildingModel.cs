@@ -13,7 +13,6 @@ namespace Game.Building
         [SerializeField]
         private Vector3Int _position;
 
-
         public BuildingTemplate Template
         {
             get { return _template; }

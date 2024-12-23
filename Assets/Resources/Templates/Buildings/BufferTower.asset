@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9c839bb27a35b41bd3f200cc491459, type: 3}
+  m_Name: BufferTower
+  m_EditorClassIdentifier: 
+  Cost: 55
+  Square: 9
+  Icon: {fileID: 21300000, guid: 7972dd97521bb1c44ba8e3774391b996, type: 3}
+  Name: Buffer Tower
+  Description: Buff me, daddy
+  Prefab: {fileID: 5005172007829500017, guid: e9f1820552b8ffb4799dbe8191a3d75c, type: 3}

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(fileName = "TileTemplate", menuName = "GameTemplates/Tile")]
-public class TileTemplate : ScriptableObject
+namespace Game.Map
 {
-    public TileBase[] Tiles;
+    [CreateAssetMenu(fileName = "TileTemplate", menuName = "TowerDefense/Templates/Tile")]
+    public class TileTemplate : ScriptableObject
+    {
+        public bool IsWalkable;
+        public bool IsBuildable;
 
-    public bool IsWalkable;
-    public bool IsAvailableForBuilding;
+        public List<TileBase> Tiles;
+    }
 }

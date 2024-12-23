@@ -1,0 +1,23 @@
+using Game.UI;
+using UnityEngine;
+using Zenject;
+
+public class UIInstaller : MonoInstaller
+{
+    [SerializeField]
+    private Game.UI.ActionsRenderer _actionsRenderer;
+
+    [SerializeField]
+    private Game.UI.BuildingInfoRenderer _buildingInfoRenderer;
+
+    public override void InstallBindings()
+    {
+        Container.Bind<ActionsRenderer>()
+            .FromInstance(_actionsRenderer)
+            .AsSingle();
+
+        Container.Bind<BuildingInfoRenderer>()
+            .FromInstance(_buildingInfoRenderer)
+            .AsSingle();
+    }
+}

@@ -1,22 +1,18 @@
 using Game.Map;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using Zenject;
 
 public class MapInstaller : MonoInstaller
 {
     [SerializeField]
-    private Game.Map.MapModel _map;
+    private MapModel _mapModelInstance;
 
     public override void InstallBindings()
     {
-        Container.Bind<Game.Map.Builder>().AsSingle();
-        Container.Bind<Highlighter>().AsSingle();
-        Container.Bind<PathFinder>().AsSingle();
-        Container.Bind<Terraformer>().AsSingle();
+        Container.Bind<MapModel>().FromInstance(_mapModelInstance);
 
-        Container.Bind<Game.Map.MapModel>()
-            .FromInstance(_map)
-            .AsSingle();
+        Container.Bind<MapBuilder>().AsSingle();
+        Container.Bind<MapPathFinder>().AsSingle();
+        Container.Bind<MapHighlighter>().AsSingle();
     }
 }

@@ -1,122 +1,71 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
 
 namespace Game.Map
 {
-    public class MapModel : MonoBehaviour
+    public class MapModel: MonoBehaviour
     {
         [SerializeField]
-        private Tilemap _baseLayer;
+        private Tilemap _mask;
 
         [SerializeField]
-        private List<Tilemap> _layers = new List<Tilemap>();
+        private Tilemap _buildingGround;
 
         [SerializeField]
-        private List<TileTemplate> _tiles;
+        private Tilemap _enemiesRoad;
 
         [SerializeField]
         private GameObject _castle;
 
         [SerializeField]
-        private GameObject _enemiesGate;
+        private GameObject _enemiesSpawn;
 
-        private Dictionary<Vector3Int, GameObject> _objectsOnMap = new();
-        private Dictionary<TileBase, TileTemplate> _tilesDictionary = new();
-        private Dictionary<string, TileTemplate> _tilesTemplateDictionary = new();
+        private int _buildingSquare = 9;
+
+        private Dictionary<Vector3, GameObject> _buildings = new();
+
+        public Tilemap Mask => _mask;
+
+        public Tilemap BuildingGround => _buildingGround;
+
+        public GameObject Castle => _castle;
+
+        public GameObject EnemiesSpawn => _enemiesSpawn;
+
+        public int BuildingSquare => _buildingSquare;
 
         public void Start()
         {
-            _tiles = Resources.LoadAll<TileTemplate>("Templates/Tiles").ToList();
-            _layers.AddRange(GetComponentsInChildren<Tilemap>());
-
-            foreach (TileTemplate tileData in _tiles)
-            {
-                _tilesTemplateDictionary.Add(tileData.name, tileData);
-                foreach (TileBase tile in tileData.Tiles)
-                {
-                    _tilesDictionary.Add(tile, tileData);
-                }
-            }
+            MakeTilesTransparent();
+            _mask.gameObject.SetActive(true);
         }
 
-        public Tilemap Map { get { return _baseLayer; } }
-
-        public GameObject Castle { get { return _castle; } }
-
-        public Vector3 CastlePosition { get { return _castle.transform.position; } }
-
-        public Vector3 EnemiesGatePosition { get { return _enemiesGate.transform.position; } }
-
-        public bool IsWalkable(TileBase tile)
+        public bool ConstructBuilding(Vector3Int position, GameObject building)
         {
-            if (tile != null && _tilesDictionary.ContainsKey(tile))
+            if (_buildings.ContainsKey(position))
             {
-                return _tilesDictionary[tile].IsWalkable;
+                return false;
             }
 
-            return false;
+            List<Vector3Int> constructionArea = GetTilesArea(position, _buildingSquare);
+            foreach (var tilePosition in constructionArea)
+            {
+                _buildings.Add(tilePosition, building);
+            }
+
+            return true;
+        }
+
+        public void RemoveBuilding(Vector3Int position)
+        {
+            List<Vector3Int> constructionArea = GetTilesArea(position, _buildingSquare);
+            foreach (var tilePosition in constructionArea)
+            {
+                _buildings.Remove(tilePosition);
+            }
         }
         
-        public bool IsWalkable(Vector3Int position)
-        {
-            TileBase tile = _baseLayer.GetTile(position);
-            return IsWalkable(tile);
-        }
-
-        public bool IsBuildable(TileBase tile)
-        {
-            if (tile != null && _tilesDictionary.ContainsKey(tile))
-            {
-                return _tilesDictionary[tile].IsBuildable;
-            }
-
-            return false;
-        }
-
-        public bool IsBuildable(Vector3Int position)
-        {
-            TileBase tile = _baseLayer.GetTile(position);
-            return IsBuildable(tile);
-        }
-        
-        public bool TryAddObjectOnMap(Vector3Int position, GameObject obj)
-        {
-            if (!_objectsOnMap.ContainsKey(position))
-            {
-                Debug.Log(obj);
-                _objectsOnMap.Add(position, obj);
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool TryRemoveObjectFromMap(Vector3Int position)
-        {
-            if (position != null && _objectsOnMap.ContainsKey(position))
-            {
-                _objectsOnMap.Remove(position);
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool TryRemoveObjectFromMap(GameObject obj)
-        {
-            Vector3Int? position = FindKeyByValue(_objectsOnMap, obj);
-            return TryRemoveObjectFromMap((Vector3Int)position);
-        }
-
-        public bool IsTileBusy(Vector3Int position)
-        {
-            return _objectsOnMap.TryGetValue(position, out var temp);
-        }
-
         public List<Vector3Int> GetTilesArea(Vector3Int center, int area)
         {
             List<Vector3Int> tilePositions = new List<Vector3Int>();
@@ -144,33 +93,72 @@ namespace Game.Map
 
         public List<Vector3Int> GetTilesArea(Vector3 center, int area)
         {
-            Vector3Int tilePosition = _baseLayer.WorldToCell(center);
+            Vector3Int tilePosition = _mask.WorldToCell(center);
             return GetTilesArea(tilePosition, area);
         }
 
-        public List<TileTemplate> Tiles { get { return _tiles; } }
-
-        public List<TileBase> GetTilesByTemplateName(string name)
+        public bool IsAvailableForBuilding(Vector3Int position)
         {
-            TileTemplate tileTemplate;
-            _tilesTemplateDictionary.TryGetValue(name, out tileTemplate);
-
-            return tileTemplate.Tiles.ToList();
+            return _buildingGround.HasTile(position) && !_buildings.ContainsKey(position);
         }
 
-        private static TKey? FindKeyByValue<TKey, TValue>(Dictionary<TKey, TValue> dictionary, TValue value) where TKey : struct
+        public bool IsAvailableForBuilding(Vector3 position)
         {
-            foreach (var pair in dictionary)
+            Vector3Int tilePosition = _mask.WorldToCell(position);
+            return IsAvailableForBuilding(tilePosition);
+        }
+
+        public bool IsAvailableForWalk(Vector3Int position)
+        {
+            return _enemiesRoad.HasTile(position);
+        }
+        
+        public Vector3 GetTileCenter(Vector3Int position)
+        {
+            return _mask.GetCellCenterWorld(position);
+        }
+
+        public Vector3 GetTileCenter(Vector3 position)
+        {
+            Vector3Int tilePosition = _mask.WorldToCell(position);
+            return GetTileCenter(tilePosition);
+        }
+
+        public GameObject GetBuildingByPosition(Vector3Int position)
+        {
+            if (_buildings.ContainsKey(position))
             {
-                Debug.Log(pair.Key);
-                Debug.Log(pair.Value);
-                Debug.Log(value);
-                if (EqualityComparer<TValue>.Default.Equals(pair.Value, value))
+                return _buildings[position];
+            }
+
+            return null;
+        }
+
+        public GameObject GetBuildingByPosition(Vector3 position)
+        {
+            Vector3Int tilePosition = _mask.WorldToCell(position);
+            return GetBuildingByPosition(tilePosition);
+        }
+
+        private void MakeTilesTransparent()
+        {
+            BoundsInt bounds = _mask.cellBounds;
+
+            for (int x = bounds.xMin; x < bounds.xMax; x++)
+            {
+                for (int y = bounds.yMin; y < bounds.yMax; y++)
                 {
-                    return pair.Key;
+                    Vector3Int position = new Vector3Int(x, y, 0);
+                    _mask.SetTileFlags(position, TileFlags.None);
+                    if (_mask.HasTile(position))
+                    {
+                        Color tileColor = _mask.GetColor(position);
+
+                        tileColor.a = 0;
+                        _mask.SetColor(position, tileColor);
+                    }
                 }
             }
-            return null;
         }
     }
 }

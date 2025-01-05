@@ -990,6 +990,10 @@
       <Project>{87F9AD2E-CF7F-BB69-2A05-9E0691C87621}</Project>
       <Name>Unity.2D.Tilemap.Extras.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="SuperTiled2UnityEditor.csproj">
+      <Project>{7BA257A0-047B-8F3F-D9F1-51A1E39B5658}</Project>
+      <Name>SuperTiled2UnityEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.ShaderLibrary.csproj">
       <Project>{01C7F6F7-2258-FE87-84A1-FD4342AB0FC3}</Project>
       <Name>Unity.RenderPipelines.Core.ShaderLibrary</Name>
@@ -1021,6 +1025,10 @@
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{4A7C84F9-780F-5C95-ECE1-C389B10FD280}</Project>
       <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="SuperTiled2Unity.csproj">
+      <Project>{9BB99FCB-40DE-66F6-9B7D-120425BEE42D}</Project>
+      <Name>SuperTiled2Unity</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Aseprite.Editor.csproj">
       <Project>{DD734276-26E2-5FB5-91EE-FAFEE645C0AC}</Project>

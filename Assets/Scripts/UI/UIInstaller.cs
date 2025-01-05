@@ -1,23 +1,39 @@
-using Game.UI;
 using UnityEngine;
 using Zenject;
+using Game.UI;
 
 public class UIInstaller : MonoInstaller
 {
     [SerializeField]
-    private Game.UI.ActionsRenderer _actionsRenderer;
+    private MenuView _menuView;
 
     [SerializeField]
-    private Game.UI.BuildingRenderer _buildingInfoRenderer;
+    private EnemyView _enemyView;
+
+    [SerializeField]
+    private RewardView _rewardView;
+
+    [SerializeField]
+    private CastleView _castleView;
+
+    [SerializeField]
+    private BuildingView _buildingView;
+
+    [SerializeField]
+    private SpellBookView _spellBookView;
+
+    [SerializeField]
+    private UpgradeBuildingView _upgradeBuildingView;
+
 
     public override void InstallBindings()
     {
-        Container.Bind<ActionsRenderer>()
-            .FromInstance(_actionsRenderer)
-            .AsSingle();
-
-        Container.Bind<BuildingRenderer>()
-            .FromInstance(_buildingInfoRenderer)
-            .AsSingle();
+        Container.Bind<MenuView>().FromInstance(_menuView);
+        Container.Bind<EnemyView>().FromInstance(_enemyView);
+        Container.Bind<RewardView>().FromInstance(_rewardView);
+        Container.Bind<CastleView>().FromInstance(_castleView);
+        Container.Bind<BuildingView>().FromInstance(_buildingView);
+        Container.Bind<SpellBookView>().FromInstance(_spellBookView);
+        Container.Bind<UpgradeBuildingView>().FromInstance(_upgradeBuildingView);
     }
 }

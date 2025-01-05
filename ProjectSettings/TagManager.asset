@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Building
+  - Castle
   - Enemy
-  - Tower
-  - Bullet
-  - PlayerBase
-  - TowerTrigger
   layers:
   - Default
   - TransparentFX
@@ -16,11 +14,8 @@ TagManager:
   - 
   - Water
   - UI
+  - Buildings
   - Enemies
-  - Towers
-  - Bullets
-  - PlayerBase
-  - TowerTriggers
   - 
   - 
   - 
@@ -30,9 +25,12 @@ TagManager:
   - 
   - 
   - 
-  - Layer 1
-  - Layer 2
-  - Layer 3
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

@@ -1,7 +1,5 @@
 using Game.UI;
 using Game.Core;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -26,8 +24,8 @@ namespace Game.States
         {
             _data = data;
 
-            _spellBookView.OnSpellChoose += HandleChooseSpell;
-            _spellBookView.OnViewHidden += HandleHideView;
+            _spellBookView.OnSpellChoose += HandleSpellChosen;
+            _spellBookView.OnViewHidden += HandleViewHidden;
             _spellBookView.Show();
         }
 
@@ -35,14 +33,14 @@ namespace Game.States
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                HandleHideView();
+                HandleViewHidden();
             }
         }
 
         public void Exit()
         {
-            _spellBookView.OnSpellChoose -= HandleChooseSpell;
-            _spellBookView.OnViewHidden -= HandleHideView;
+            _spellBookView.OnSpellChoose -= HandleSpellChosen;
+            _spellBookView.OnViewHidden -= HandleViewHidden;
             _spellBookView.Hide();
         }
 
@@ -51,12 +49,12 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleHideView()
+        private void HandleViewHidden()
         {
             _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());
         }
 
-        private void HandleChooseSpell(GameObject spell)
+        private void HandleSpellChosen(GameObject spell)
         {
             _playerStates.SwitchState<CastState, CastStateData>(new CastStateData(spell));
         }

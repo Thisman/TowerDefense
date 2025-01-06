@@ -1,6 +1,5 @@
 using Game.Core;
 using Game.Map;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -56,7 +55,7 @@ namespace Game.States
 
             if (Input.GetMouseButtonDown(0))
             {
-                HandleConstructBuilding();
+                HandleBuildConstructed();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -80,7 +79,7 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleConstructBuilding()
+        private void HandleBuildConstructed()
         {
             Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position.z = 0;

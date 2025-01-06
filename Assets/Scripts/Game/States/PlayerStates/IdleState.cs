@@ -1,11 +1,9 @@
 using Game.Core;
 using Game.Map;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
-using static UnityEngine.GraphicsBuffer;
 
 namespace Game.States
 {
@@ -32,8 +30,8 @@ namespace Game.States
         {
             if (Input.GetMouseButtonDown(0))
             {
-                HandleChooseTower();
-                HandleChooseEnemy();
+                HandleTowerClicked();
+                HandleEnemyClicked();
             }
         }
 
@@ -44,7 +42,7 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleChooseTower()
+        private void HandleTowerClicked()
         {
             if (IsPointerOverUIElement())
             {
@@ -61,7 +59,7 @@ namespace Game.States
             }
         }
 
-        private void HandleChooseEnemy()
+        private void HandleEnemyClicked()
         {
             if (IsPointerOverUIElement())
             {

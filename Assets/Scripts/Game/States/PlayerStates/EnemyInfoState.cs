@@ -1,7 +1,4 @@
 using Game.Core;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 using Game.UI;
@@ -33,7 +30,7 @@ namespace Game.States
         {
             _data = data;
 
-            _enemyView.OnViewHidden += HandleHideView;
+            _enemyView.OnViewHidden += HandleViewHidden;
             _enemyView.Show(_data.Enemy);
         }
 
@@ -41,13 +38,13 @@ namespace Game.States
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                HandleHideView();
+                HandleViewHidden();
             }
         }
 
         public void Exit()
         {
-            _enemyView.OnViewHidden -= HandleHideView;
+            _enemyView.OnViewHidden -= HandleViewHidden;
             _enemyView.Hide();
         }
 
@@ -56,7 +53,7 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleHideView()
+        private void HandleViewHidden()
         {
             _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());
         }

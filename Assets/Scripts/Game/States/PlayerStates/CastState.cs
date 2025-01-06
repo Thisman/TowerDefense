@@ -1,7 +1,5 @@
 using Game.Core;
 using Game.Map;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -45,7 +43,7 @@ namespace Game.States
 
             if (Input.GetMouseButtonDown(0))
             {
-                HandleCastSpell();
+                HandleSpellCasted();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -68,7 +66,7 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleCastSpell()
+        private void HandleSpellCasted()
         {
             Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position.z = 0;

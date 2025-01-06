@@ -1,8 +1,6 @@
 using Game.Core;
 using Game.Map;
 using Game.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -37,20 +35,20 @@ namespace Game.States
             _data = data;
 
             _buildingView.Show(_data.Building);
-            _buildingView.OnViewHidden += HandleHideView;
-            _buildingView.OnDeleteBuilding += HandleDeleteBuilding;
+            _buildingView.OnViewHidden += HandleViewHidden;
+            _buildingView.OnDeleteBuilding += HandleBuildDeleted;
         }
 
         public void Update() {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                HandleHideView();
+                HandleViewHidden();
             }
         }
 
         public void Exit() {
-            _buildingView.OnDeleteBuilding -= HandleDeleteBuilding;
-            _buildingView.OnViewHidden -= HandleHideView;
+            _buildingView.OnDeleteBuilding -= HandleBuildDeleted;
+            _buildingView.OnViewHidden -= HandleViewHidden;
             _buildingView.Hide();
         }
 
@@ -59,15 +57,15 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleHideView()
+        private void HandleViewHidden()
         {
             _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());
         }
 
-        private void HandleDeleteBuilding()
+        private void HandleBuildDeleted()
         {
             _mapBuilder.RemoveBuilding(_data.Building);
-            HandleHideView();
+            HandleViewHidden();
         }
     }
 }

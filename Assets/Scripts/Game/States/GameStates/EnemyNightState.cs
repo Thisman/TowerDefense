@@ -1,10 +1,6 @@
 using Game.Core;
 using Game.Enemies;
 using Game.Environment;
-using Game.UI;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 namespace Game.States
@@ -43,11 +39,11 @@ namespace Game.States
 
             _skyBoxController.SetNightLightning();
 
-            _spawner.OnWaveSpawnEnded += HandleFinishWaves;
+            _spawner.OnWaveSpawnEnded += HandleWaveSpawnEnded;
             _spawner.StartSpawnEnemies();
 
-            _menuView.OpenSpellBook += HandleOpenSpellBook;
-            _menuView.GoToNextState += HandleEndNight;
+            _menuView.OpenSpellBook += HandleSpellBookOpened;
+            _menuView.GoToNextState += HandleNightEnded;
         }
 
         public void Update() { }
@@ -56,11 +52,11 @@ namespace Game.States
         {
 
             _spawner.StopSpawnEnemies();
-            _spawner.OnWaveSpawnEnded -= HandleFinishWaves;
+            _spawner.OnWaveSpawnEnded -= HandleWaveSpawnEnded;
 
             _menuView.SwitchGoToNextButtonState(false);
-            _menuView.OpenSpellBook -= HandleOpenSpellBook;
-            _menuView.GoToNextState -= HandleEndNight;
+            _menuView.OpenSpellBook -= HandleSpellBookOpened;
+            _menuView.GoToNextState -= HandleNightEnded;
         }
 
         public EnemyNightStateData GetData()
@@ -68,14 +64,19 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleOpenSpellBook()
+        private void HandleSpellBookOpened()
         {
             _playerStates.SwitchState<SpellBookState, SpellBookStateData>(new SpellBookStateData());
         }
 
-        private void HandleEndNight()
+        private void HandleNightEnded()
         {
             _gameStates.SwitchState<RewardsState, RewardsStateData>(new RewardsStateData());
+        }
+
+        private void HandleWaveSpawnEnded()
+        {
+            _menuView.SwitchGoToNextButtonState(true);
         }
 
         private void StartMusic()
@@ -85,11 +86,6 @@ namespace Game.States
                 _musicController.PlayMusic("Firesong");
                 _musicController.FadeVolume(.3f, 1);
             });
-        }
-
-        private void HandleFinishWaves()
-        {
-            _menuView.SwitchGoToNextButtonState(true);
         }
     }
 }

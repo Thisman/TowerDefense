@@ -1,7 +1,6 @@
 using Game.Core;
 using UnityEngine;
 using Zenject;
-using Game.UI;
 using Game.Environment;
 
 namespace Game.States
@@ -37,16 +36,16 @@ namespace Game.States
             _skyBoxController.SetDayLightning();
 
             _menuView.SwitchGoToNextButtonState(true);
-            _menuView.ChooseBuilding += HandleChooseBuilding;
-            _menuView.GoToNextState += HandleGoToNight;
+            _menuView.ChooseBuilding += HandleBuildingChosen;
+            _menuView.GoToNextState += HandleDayEnded;
         }
 
         public void Update() { }
 
         public void Exit() {
             _menuView.SwitchGoToNextButtonState(false);
-            _menuView.ChooseBuilding -= HandleChooseBuilding;
-            _menuView.GoToNextState -= HandleGoToNight;
+            _menuView.ChooseBuilding -= HandleBuildingChosen;
+            _menuView.GoToNextState -= HandleDayEnded;
         }
 
         public DayStateData GetData()
@@ -54,12 +53,12 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleChooseBuilding(GameObject building)
+        private void HandleBuildingChosen(GameObject building)
         {
             _playerStates.SwitchState<ConstructionState, ConstructionStateData>(new ConstructionStateData(building));
         }
 
-        private void HandleGoToNight()
+        private void HandleDayEnded()
         {
             _gameStates.SwitchState<EnemyNightState, EnemyNightStateData>(new EnemyNightStateData());
         }

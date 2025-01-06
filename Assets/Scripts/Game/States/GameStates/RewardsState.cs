@@ -1,8 +1,5 @@
 using Game.Core;
 using Game.UI;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 namespace Game.States
@@ -34,14 +31,14 @@ namespace Game.States
             StartMusic();
 
             _rewardView.Show();
-            _rewardView.OnRewardChoose += HandleChooseReward;
+            _rewardView.OnRewardChoose += HandleRewardChosen;
         }
 
         public void Update() { }
 
         public void Exit() {
             _rewardView.Hide();
-            _rewardView.OnRewardChoose -= HandleChooseReward;
+            _rewardView.OnRewardChoose -= HandleRewardChosen;
         }
 
         public RewardsStateData GetData()
@@ -49,7 +46,7 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleChooseReward()
+        private void HandleRewardChosen()
         {
             _gameStates.SwitchState<DayState, DayStateData>(new DayStateData());
             _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());

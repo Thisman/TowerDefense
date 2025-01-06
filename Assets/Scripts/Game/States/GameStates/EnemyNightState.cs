@@ -42,8 +42,8 @@ namespace Game.States
             _spawner.OnWaveSpawnEnded += HandleWaveSpawnEnded;
             _spawner.StartSpawnEnemies();
 
-            _menuView.OpenSpellBook += HandleSpellBookOpened;
-            _menuView.GoToNextState += HandleNightEnded;
+            _menuView.OnSpellBookOpened += HandleSpellBookOpened;
+            _menuView.OnStateChanged += HandleNightEnded;
         }
 
         public void Update() { }
@@ -55,8 +55,8 @@ namespace Game.States
             _spawner.OnWaveSpawnEnded -= HandleWaveSpawnEnded;
 
             _menuView.SwitchGoToNextButtonState(false);
-            _menuView.OpenSpellBook -= HandleSpellBookOpened;
-            _menuView.GoToNextState -= HandleNightEnded;
+            _menuView.OnSpellBookOpened -= HandleSpellBookOpened;
+            _menuView.OnStateChanged -= HandleNightEnded;
         }
 
         public EnemyNightStateData GetData()

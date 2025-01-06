@@ -1,8 +1,5 @@
-using DG.Tweening;
 using Game.Core;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +7,7 @@ namespace Game.UI
 {
     public class SpellCard : CardUI
     {
-        public Action<GameObject> OnClick;
+        public Action<GameObject> OnClicked;
 
         [SerializeField]
         private Button _button;
@@ -20,7 +17,7 @@ namespace Game.UI
 
         public void OnEnable()
         {
-            _button.onClick.AddListener(HandleChooseCard);
+            _button.onClick.AddListener(HandleCardClicked);
         }
 
         override public void OnDisable()
@@ -28,9 +25,9 @@ namespace Game.UI
             _button.onClick.RemoveAllListeners();
         }
 
-        private void HandleChooseCard()
+        private void HandleCardClicked()
         {
-            OnClick?.Invoke(_spell);
+            OnClicked?.Invoke(_spell);
         }
     }
 }

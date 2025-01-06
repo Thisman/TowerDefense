@@ -31,14 +31,14 @@ namespace Game.States
             StartMusic();
 
             _rewardView.Show();
-            _rewardView.OnRewardChoose += HandleRewardChosen;
+            _rewardView.OnRewardChosen += HandleRewardChosen;
         }
 
         public void Update() { }
 
         public void Exit() {
             _rewardView.Hide();
-            _rewardView.OnRewardChoose -= HandleRewardChosen;
+            _rewardView.OnRewardChosen -= HandleRewardChosen;
         }
 
         public RewardsStateData GetData()

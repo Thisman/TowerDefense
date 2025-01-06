@@ -1,15 +1,12 @@
 using Game.Core;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Game.UI
 {
     public class SpellBookView : ViewUI
     {
-        public Action<GameObject> OnSpellChoose;
+        public Action<GameObject> OnSpellChosen;
 
         [SerializeField]
         private SpellCard[] _spellCards;
@@ -19,7 +16,7 @@ namespace Game.UI
             base.OnEnable();
             foreach (var card in _spellCards)
             {
-                card.OnClick += HandleChooseSpell;
+                card.OnClicked += HandleCardClicked;
             }
         }
 
@@ -28,7 +25,7 @@ namespace Game.UI
             base.OnDisable();
             foreach (var card in _spellCards)
             {
-                card.OnClick -= HandleChooseSpell;
+                card.OnClicked -= HandleCardClicked;
             }
         }
 
@@ -51,9 +48,9 @@ namespace Game.UI
             base.Hide();
         }
 
-        private void HandleChooseSpell(GameObject spell)
+        private void HandleCardClicked(GameObject spell)
         {
-            OnSpellChoose?.Invoke(spell);
+            OnSpellChosen?.Invoke(spell);
         }
     }
 }

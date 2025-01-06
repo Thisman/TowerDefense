@@ -1,14 +1,12 @@
 using Game.UI;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuView : MonoBehaviour
 {
-    public Action GoToNextState;
-    public Action OpenSpellBook;
-    public Action<GameObject> ChooseBuilding;
+    public Action OnStateChanged;
+    public Action OnSpellBookOpened;
+    public Action<GameObject> OnBuildingChosen;
 
     [SerializeField]
     private GoToNextStateButton _goToNextStateButtonUI;
@@ -21,21 +19,21 @@ public class MenuView : MonoBehaviour
 
     public void OnEnable()
     {
-        _goToNextStateButtonUI.OnClick += HandleGoToNight;
-        _openSpellBookButtonUI.OnClick += HandleOpenSpellBook;
+        _goToNextStateButtonUI.OnClicked += HandleStateButtonClicked;
+        _openSpellBookButtonUI.OnClicked += HandleOpenSpellBookButtonClicked;
         foreach (var button in _chooseBuildingButtonsUI)
         {
-            button.OnClick += HandleChooseBuilding;
+            button.OnClicked += HandleBuildingButtonClicked;
         }
     }
 
     public void OnDisable()
     {
-        _goToNextStateButtonUI.OnClick -= HandleGoToNight;
-        _openSpellBookButtonUI.OnClick -= HandleOpenSpellBook;
+        _goToNextStateButtonUI.OnClicked -= HandleStateButtonClicked;
+        _openSpellBookButtonUI.OnClicked -= HandleOpenSpellBookButtonClicked;
         foreach (var button in _chooseBuildingButtonsUI)
         {
-            button.OnClick -= HandleChooseBuilding;
+            button.OnClicked -= HandleBuildingButtonClicked;
         }
     }
 
@@ -50,18 +48,18 @@ public class MenuView : MonoBehaviour
         }
     }
 
-    private void HandleGoToNight()
+    private void HandleStateButtonClicked()
     {
-        GoToNextState?.Invoke();
+        OnStateChanged?.Invoke();
     }
 
-    private void HandleOpenSpellBook()
+    private void HandleOpenSpellBookButtonClicked()
     {
-        OpenSpellBook?.Invoke();
+        OnSpellBookOpened?.Invoke();
     }
 
-    private void HandleChooseBuilding(GameObject building)
+    private void HandleBuildingButtonClicked(GameObject building)
     {
-        ChooseBuilding?.Invoke(building);
+        OnBuildingChosen?.Invoke(building);
     }
 }

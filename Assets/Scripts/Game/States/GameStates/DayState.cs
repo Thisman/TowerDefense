@@ -36,16 +36,16 @@ namespace Game.States
             _skyBoxController.SetDayLightning();
 
             _menuView.SwitchGoToNextButtonState(true);
-            _menuView.ChooseBuilding += HandleBuildingChosen;
-            _menuView.GoToNextState += HandleDayEnded;
+            _menuView.OnBuildingChosen += HandleBuildingChosen;
+            _menuView.OnStateChanged += HandleDayEnded;
         }
 
         public void Update() { }
 
         public void Exit() {
             _menuView.SwitchGoToNextButtonState(false);
-            _menuView.ChooseBuilding -= HandleBuildingChosen;
-            _menuView.GoToNextState -= HandleDayEnded;
+            _menuView.OnBuildingChosen -= HandleBuildingChosen;
+            _menuView.OnStateChanged -= HandleDayEnded;
         }
 
         public DayStateData GetData()

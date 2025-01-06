@@ -1,17 +1,13 @@
-using DG.Tweening;
 using Game.Core;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Game.UI
 {
     public class RewardView : ViewUI
     {
-        public Action OnRewardChoose;
+        public Action OnRewardChosen;
 
         [SerializeField]
         private RewardCard[] _rewardCards;
@@ -20,7 +16,7 @@ namespace Game.UI
         {
             foreach(var card in _rewardCards)
             {
-                card.gameObject.GetComponent<Button>().onClick.AddListener(HandleChooseReward);
+                card.gameObject.GetComponent<Button>().onClick.AddListener(HandleCardClicked);
             }
         }
 
@@ -42,9 +38,9 @@ namespace Game.UI
             }
         }
 
-        private void HandleChooseReward()
+        private void HandleCardClicked()
         {
-            OnRewardChoose?.Invoke();
+            OnRewardChosen?.Invoke();
         }
     }
 }

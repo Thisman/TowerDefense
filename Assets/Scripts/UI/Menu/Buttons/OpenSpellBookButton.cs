@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,14 +6,14 @@ namespace Game.UI
 {
     public class OpenSpellBookButton : MonoBehaviour
     {
-        public Action OnClick;
+        public Action OnClicked;
 
         [SerializeField]
         private Button _button;
 
         public void OnEnable()
         {
-            _button.onClick.AddListener(HandleClick);
+            _button.onClick.AddListener(HandleButtonClicked);
         }
 
         public void OnDisable()
@@ -23,9 +21,9 @@ namespace Game.UI
             _button.onClick.RemoveAllListeners();
         }
 
-        private void HandleClick()
+        private void HandleButtonClicked()
         {
-            OnClick?.Invoke();
+            OnClicked?.Invoke();
         }
     }
 }

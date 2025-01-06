@@ -1,8 +1,6 @@
 using Game.Buildings;
 using Game.Core;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +9,7 @@ namespace Game.UI
 {
     public class BuildingView : ViewUI
     {
-        public Action OnDeleteBuilding;
+        public Action OnBuildingDeleted;
 
         [SerializeField]
         private Image _buildingAvatarUI;
@@ -25,7 +23,7 @@ namespace Game.UI
         override public void OnEnable()
         {
             base.OnEnable();
-            _deleteButtonUI.onClick.AddListener(HandleDeleteBuilding);
+            _deleteButtonUI.onClick.AddListener(HandleDeleteBuildingButtonClicked);
         }
 
         override public void OnDisable()
@@ -45,9 +43,9 @@ namespace Game.UI
             base.Show();
         }
 
-        private void HandleDeleteBuilding()
+        private void HandleDeleteBuildingButtonClicked()
         {
-            OnDeleteBuilding?.Invoke();
+            OnBuildingDeleted?.Invoke();
         }
     }
 }

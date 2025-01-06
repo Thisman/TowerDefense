@@ -24,7 +24,7 @@ namespace Game.States
         {
             _data = data;
 
-            _spellBookView.OnSpellChoose += HandleSpellChosen;
+            _spellBookView.OnSpellChosen += HandleSpellChosen;
             _spellBookView.OnViewHidden += HandleViewHidden;
             _spellBookView.Show();
         }
@@ -39,7 +39,7 @@ namespace Game.States
 
         public void Exit()
         {
-            _spellBookView.OnSpellChoose -= HandleSpellChosen;
+            _spellBookView.OnSpellChosen -= HandleSpellChosen;
             _spellBookView.OnViewHidden -= HandleViewHidden;
             _spellBookView.Hide();
         }

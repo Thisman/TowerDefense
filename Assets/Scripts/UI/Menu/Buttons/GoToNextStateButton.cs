@@ -1,7 +1,5 @@
 using DG.Tweening;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +7,7 @@ namespace Game.UI
 {
     public class GoToNextStateButton : MonoBehaviour
     {
-        public Action OnClick;
+        public Action OnClicked;
 
         [SerializeField]
         private Button _button;
@@ -17,9 +15,11 @@ namespace Game.UI
         [SerializeField]
         private float _animationTime;
 
+        private Tween _animation;
+
         public void OnEnable()
         {
-            _button.onClick.AddListener(HandleClick);
+            _button.onClick.AddListener(HandleButtonClicked);
         }
 
         public void OnDisable()
@@ -27,20 +27,25 @@ namespace Game.UI
             _button.onClick.RemoveAllListeners();
         }
 
+        private void OnDestroy()
+        {
+            _animation?.Kill();
+        }
+
         public void Show() {
-            gameObject.transform.DOScale(1, _animationTime);
+            _animation = gameObject.transform.DOScale(1, _animationTime);
             _button.enabled = true;
         }
 
         public void Hide()
         {
             _button.enabled = false;
-            gameObject.transform.DOScale(0, _animationTime);
+            _animation = gameObject.transform.DOScale(0, _animationTime);
         }
 
-        private void HandleClick()
+        private void HandleButtonClicked()
         {
-            OnClick?.Invoke();
+            OnClicked?.Invoke();
         }
     }
 }

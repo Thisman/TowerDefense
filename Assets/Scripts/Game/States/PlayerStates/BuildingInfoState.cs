@@ -36,7 +36,7 @@ namespace Game.States
 
             _buildingView.Show(_data.Building);
             _buildingView.OnViewHidden += HandleViewHidden;
-            _buildingView.OnDeleteBuilding += HandleBuildDeleted;
+            _buildingView.OnBuildingDeleted += HandleBuildDeleted;
         }
 
         public void Update() {
@@ -47,7 +47,7 @@ namespace Game.States
         }
 
         public void Exit() {
-            _buildingView.OnDeleteBuilding -= HandleBuildDeleted;
+            _buildingView.OnBuildingDeleted -= HandleBuildDeleted;
             _buildingView.OnViewHidden -= HandleViewHidden;
             _buildingView.Hide();
         }

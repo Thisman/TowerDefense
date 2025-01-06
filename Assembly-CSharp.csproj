@@ -98,7 +98,6 @@
     <Compile Include="Assets\Scripts\Map\MapInstaller.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Map\Models\MapModel.cs" />
-    <Compile Include="Assets\Scripts\Core\Extentions\ListExtension.cs" />
     <Compile Include="Assets\Scripts\Game\States\PlayerStates\EnemyInfoState.cs" />
     <Compile Include="Assets\Scripts\Map\Components\MapPathFinder.cs" />
     <Compile Include="Assets\Scripts\Enemy\Behaviors\DestroyBehavior.cs" />

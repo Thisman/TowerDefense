@@ -1,4 +1,4 @@
-using Game.Building;
+using Game.Buildings;
 using Game.Core;
 using System;
 using System.Collections;

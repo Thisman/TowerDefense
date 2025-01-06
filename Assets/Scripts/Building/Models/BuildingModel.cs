@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Building
+namespace Game.Buildings
 {
     public class BuildingModel : MonoBehaviour
     {
@@ -10,16 +8,16 @@ namespace Game.Building
         private Sprite _avatar;
 
         [SerializeField]
+        private int _square = 9;
+
+        [SerializeField]
         [TextArea(3, 10)]
         private string _description;
 
-        [SerializeField]
-        private int _square = 9;
-
         public Sprite Avatar => _avatar;
 
-        public string Description => _description;
-
         public int Square => _square;
+
+        public string Description => _description;
     }
 }

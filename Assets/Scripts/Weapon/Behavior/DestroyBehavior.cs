@@ -31,12 +31,6 @@ namespace Game.Weapons
             }
         }
 
-        public void Explode()
-        {
-            _animation = gameObject.transform.DOScale(Random.Range(_randomScaleMinOffset, _randomScaleMaxOffset), 0.2f)
-                .OnComplete(() => Destroy(gameObject));
-        }
-
         public void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("Enemy"))
@@ -45,6 +39,12 @@ namespace Game.Weapons
                 enemyModel.Health -= _bulletModel.Damage;
                 Explode();
             }
+        }
+
+        public void Explode()
+        {
+            _animation = gameObject.transform.DOScale(Random.Range(_randomScaleMinOffset, _randomScaleMaxOffset), 0.2f)
+                .OnComplete(() => Destroy(gameObject));
         }
     }
 }

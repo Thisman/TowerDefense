@@ -4,10 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Building
   - Castle
   - Enemy
   - Bullet
+  - AttackTower
+  - MiningTower
+  - BuffTower
   layers:
   - Default
   - TransparentFX

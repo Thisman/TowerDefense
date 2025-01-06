@@ -37,7 +37,7 @@ namespace Game.States
             _data = data;
 
             _buildingView.Show(_data.Building);
-            _buildingView.OnHideView += HandleHideView;
+            _buildingView.OnViewHidden += HandleHideView;
             _buildingView.OnDeleteBuilding += HandleDeleteBuilding;
         }
 
@@ -50,7 +50,7 @@ namespace Game.States
 
         public void Exit() {
             _buildingView.OnDeleteBuilding -= HandleDeleteBuilding;
-            _buildingView.OnHideView -= HandleHideView;
+            _buildingView.OnViewHidden -= HandleHideView;
             _buildingView.Hide();
         }
 

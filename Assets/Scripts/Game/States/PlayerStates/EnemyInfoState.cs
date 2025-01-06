@@ -33,7 +33,7 @@ namespace Game.States
         {
             _data = data;
 
-            _enemyView.OnHideView += HandleHideView;
+            _enemyView.OnViewHidden += HandleHideView;
             _enemyView.Show(_data.Enemy);
         }
 
@@ -47,7 +47,7 @@ namespace Game.States
 
         public void Exit()
         {
-            _enemyView.OnHideView -= HandleHideView;
+            _enemyView.OnViewHidden -= HandleHideView;
             _enemyView.Hide();
         }
 

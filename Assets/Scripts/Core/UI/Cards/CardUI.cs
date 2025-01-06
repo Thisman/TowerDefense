@@ -1,6 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +9,18 @@ namespace Game.Core
     {
         [SerializeField]
         private Image _imageRenderer;
+
+        private Tween _animation;
+
+        virtual public void OnDisable()
+        {
+            OnPointerExit(new PointerEventData(EventSystem.current));
+        }
+
+        virtual public void OnDestroy()
+        {
+            _animation?.Kill();
+        }
 
         virtual public void Show()
         {
@@ -29,14 +39,14 @@ namespace Game.Core
 
         public void OnPointerEnter(PointerEventData data)
         {
-            DOTween.Sequence()
+            _animation = DOTween.Sequence()
                 .Join(gameObject.transform.DORotate(new Vector3(1, 1, 1.6f), .3f))
                 .Join(gameObject.transform.DOScale(new Vector3(1.04f, 1.04f, 1), .3f));
         }
 
         public void OnPointerExit(PointerEventData data)
         {
-            DOTween.Sequence()
+            _animation = DOTween.Sequence()
                 .Join(gameObject.transform.DORotate(new Vector3(0, 0, 0), .3f))
                 .Join(gameObject.transform.DOScale(new Vector3(1, 1, 1), .3f));
         }

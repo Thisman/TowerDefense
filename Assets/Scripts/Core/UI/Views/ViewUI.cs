@@ -1,7 +1,4 @@
-using DG.Tweening;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,10 +6,10 @@ namespace Game.Core
 {
     public class ViewUI : MonoBehaviour
     {
-        public Action OnHideView;
+        public Action OnViewHidden;
 
         [SerializeField]
-        private bool _hideByEscape;
+        private bool _shouldHideByEscape;
 
         [SerializeField]
         private Button _hideViewButtonUI;
@@ -21,7 +18,7 @@ namespace Game.Core
         {
             if (_hideViewButtonUI != null)
             {
-                _hideViewButtonUI.onClick.AddListener(HandleHideView);
+                _hideViewButtonUI.onClick.AddListener(HandleHideViewButtonClicked);
             }
         }
 
@@ -35,15 +32,15 @@ namespace Game.Core
 
         public void Update()
         {
-            if (_hideByEscape && Input.GetKeyDown(KeyCode.Escape))
+            if (_shouldHideByEscape && Input.GetKeyDown(KeyCode.Escape))
             {
-                HandleHideView();
+                HandleHideViewButtonClicked();
             }
         }
 
-        private void HandleHideView()
+        private void HandleHideViewButtonClicked()
         {
-            OnHideView?.Invoke();
+            OnViewHidden?.Invoke();
         }
 
         virtual public void Show()

@@ -23,7 +23,7 @@ namespace Game.UI
             _button.onClick.AddListener(HandleChooseCard);
         }
 
-        public void OnDisable()
+        override public void OnDisable()
         {
             _button.onClick.RemoveAllListeners();
         }

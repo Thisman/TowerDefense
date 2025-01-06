@@ -1,6 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,6 +9,11 @@ public class SpinButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnDisable()
     {
         OnPointerExit(new PointerEventData(EventSystem.current));
+    }
+
+    public void OnDestroy()
+    {
+        _animation?.Kill();
     }
 
     public void OnPointerEnter(PointerEventData data)

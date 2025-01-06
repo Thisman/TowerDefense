@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CastBehavior : MonoBehaviour
+namespace Game.Magic
 {
-    public void Start()
+    public class CastBehavior : MonoBehaviour
     {
-        StartCoroutine(CastSpell());
-    }
+        public void Start()
+        {
+            StartCoroutine(CastSpell());
+        }
 
-    public void OnDestroy()
-    {
-        StopAllCoroutines();
-    }
+        public void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
 
-    private IEnumerator CastSpell()
-    {
-        yield return new WaitForSeconds(3);
-        GameObject.Destroy(gameObject);
+        private IEnumerator CastSpell()
+        {
+            yield return new WaitForSeconds(3);
+            GameObject.Destroy(gameObject);
+        }
     }
 }

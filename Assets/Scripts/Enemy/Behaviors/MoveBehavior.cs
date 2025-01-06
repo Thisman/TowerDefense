@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Enemy
+namespace Game.Enemies
 {
     public class MoveBehavior : MonoBehaviour
     {

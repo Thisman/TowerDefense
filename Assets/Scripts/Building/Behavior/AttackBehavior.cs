@@ -38,7 +38,7 @@ namespace Game.Buildings
             if (other.gameObject.CompareTag("Enemy"))
             {
                 EnemyModel enemyModel = other.gameObject.GetComponent<EnemyModel>();
-                enemyModel.OnDestroyEnemy += HandleEnemyDestroyed;
+                enemyModel.OnEnemyDestroyed += HandleEnemyDestroyed;
                 _targets.Add(enemyModel);
             }
         }
@@ -53,7 +53,7 @@ namespace Game.Buildings
         {
             if (_targets.Contains(enemyModel))
             {
-                enemyModel.OnDestroyEnemy -= HandleEnemyDestroyed;
+                enemyModel.OnEnemyDestroyed -= HandleEnemyDestroyed;
                 _targets.Remove(enemyModel);
             }
         }

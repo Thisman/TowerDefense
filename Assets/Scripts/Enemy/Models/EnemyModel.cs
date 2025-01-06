@@ -1,15 +1,11 @@
-using Game.Map;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 namespace Game.Enemies
 {
     public class EnemyModel : MonoBehaviour
     {
-        public Action<EnemyModel> OnDestroyEnemy;
+        public Action<EnemyModel> OnEnemyDestroyed;
 
         [SerializeField]
         private string _name;
@@ -38,7 +34,7 @@ namespace Game.Enemies
 
         public void OnDestroy()
         {
-            OnDestroyEnemy?.Invoke(this);
+            OnEnemyDestroyed?.Invoke(this);
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Game.States
 
             _skyBoxController.SetNightLightning();
 
-            _spawner.OnFinishWaves += HandleFinishWaves;
+            _spawner.OnWaveSpawnEnded += HandleFinishWaves;
             _spawner.StartSpawnEnemies();
 
             _menuView.OpenSpellBook += HandleOpenSpellBook;
@@ -56,7 +56,7 @@ namespace Game.States
         {
 
             _spawner.StopSpawnEnemies();
-            _spawner.OnFinishWaves -= HandleFinishWaves;
+            _spawner.OnWaveSpawnEnded -= HandleFinishWaves;
 
             _menuView.SwitchGoToNextButtonState(false);
             _menuView.OpenSpellBook -= HandleOpenSpellBook;

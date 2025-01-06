@@ -1,4 +1,3 @@
-using Game.Enemy;
 using Game.Map;
 using System;
 using System.Collections;
@@ -10,7 +9,7 @@ namespace Game.Enemies
 {
     public class Spawner : MonoBehaviour
     {
-        public Action OnFinishWaves;
+        public Action OnWaveSpawnEnded;
 
         [SerializeField]
         private float _waveSpawnDelaySec;
@@ -51,12 +50,12 @@ namespace Game.Enemies
         {
             foreach (var wave in _waves)
             {
-                yield return StartCoroutine(SpawnWave(wave));
                 yield return new WaitForSeconds(_waveSpawnDelaySec);
+                yield return StartCoroutine(SpawnWave(wave));
             }
 
             yield return new WaitUntil(() => _enemies.Count == 0);
-            OnFinishWaves?.Invoke();
+            OnWaveSpawnEnded?.Invoke();
         }
 
         private IEnumerator SpawnWave(Wave wave)
@@ -67,7 +66,7 @@ namespace Game.Enemies
                 GameObject enemy = _diContainer.InstantiatePrefab(wave.Enemy, enemiesSpawn.transform.position, Quaternion.identity, enemiesSpawn.transform);
                 EnemyModel enemyModel = enemy.GetComponent<EnemyModel>();
                 AddEnemyToPool(enemyModel);
-                enemyModel.OnDestroyEnemy += RemoveEnemyFromPool;
+                enemyModel.OnEnemyDestroyed += RemoveEnemyFromPool;
 
                 yield return new WaitForSeconds(4);
             }
@@ -80,7 +79,7 @@ namespace Game.Enemies
 
         private void RemoveEnemyFromPool(EnemyModel enemyModel)
         {
-            enemyModel.OnDestroyEnemy += RemoveEnemyFromPool;
+            enemyModel.OnEnemyDestroyed += RemoveEnemyFromPool;
             _enemies.Remove(enemyModel);
         }
     }

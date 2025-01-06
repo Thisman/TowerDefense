@@ -1,9 +1,6 @@
-using Game.Map;
-using System.Collections;
 using UnityEngine;
-using Zenject;
 
-namespace Game.Enemy
+namespace Game.Enemies
 {
     public class Wave : MonoBehaviour
     {

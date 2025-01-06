@@ -2,6 +2,7 @@ using Game.Core;
 using UnityEngine;
 using Zenject;
 using Game.UI;
+using Game.Environment;
 
 namespace Game.States
 {
@@ -21,6 +22,9 @@ namespace Game.States
         [Inject]
         private MusicController _musicController;
 
+        [Inject]
+        private SkyBoxController _skyBoxController;
+
         private DayStateData _data;
 
         public void Enter() { }
@@ -29,6 +33,8 @@ namespace Game.States
             _data = data;
 
             StartMusic();
+
+            _skyBoxController.SetDayLightning();
 
             _menuView.SwitchGoToNextButtonState(true);
             _menuView.ChooseBuilding += HandleChooseBuilding;
@@ -63,7 +69,7 @@ namespace Game.States
             _musicController.FadeVolume(0, 1, () =>
             {
                 _musicController.PlayMusic("Morning");
-                _musicController.FadeVolume(1, 1);
+                _musicController.FadeVolume(.3f, 1);
             });
         }
     }

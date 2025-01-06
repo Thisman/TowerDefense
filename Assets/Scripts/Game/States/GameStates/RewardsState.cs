@@ -60,7 +60,7 @@ namespace Game.States
             _musicController.FadeVolume(0, 1, () =>
             {
                 _musicController.PlayMusic("Heroic Age");
-                _musicController.FadeVolume(1, 1);
+                _musicController.FadeVolume(.3f, 1);
             });
         }
     }

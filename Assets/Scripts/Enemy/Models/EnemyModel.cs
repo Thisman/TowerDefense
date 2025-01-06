@@ -1,7 +1,9 @@
+using Game.Map;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Enemies
 {
@@ -17,6 +19,9 @@ namespace Game.Enemies
         private string _description;
 
         [SerializeField]
+        private float _health;
+
+        [SerializeField]
         private Sprite _avatar;
 
         public string Name => _name;
@@ -24,6 +29,12 @@ namespace Game.Enemies
         public Sprite Avatar => _avatar;
 
         public string Description => _description;
+
+        public float Health
+        {
+            get { return _health; }
+            set { _health = value; }
+        }
 
         public void OnDestroy()
         {

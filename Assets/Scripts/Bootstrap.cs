@@ -1,4 +1,5 @@
 using Game.Core;
+using Game.Map;
 using Game.States;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,12 @@ public class Bootstrap : MonoBehaviour
 
     [Inject]
     private DiContainer _diContainer;
+
+    [Inject]
+    private MapModel _mapModel;
+
+    [Inject]
+    private MapPathFinder _mapPathFinder;
 
     public void Start()
     {
@@ -35,6 +42,7 @@ public class Bootstrap : MonoBehaviour
 
         _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());
 
+        _mapModel.EnemiesPath = _mapPathFinder.FindEnemiesPath();
     }
 
     public void Update()

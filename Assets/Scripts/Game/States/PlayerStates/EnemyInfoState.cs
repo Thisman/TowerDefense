@@ -33,7 +33,7 @@ namespace Game.States
         {
             _data = data;
 
-            _enemyView.OnHideView += HandleCloseView;
+            _enemyView.OnHideView += HandleHideView;
             _enemyView.Show(_data.Enemy);
         }
 
@@ -41,13 +41,13 @@ namespace Game.States
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                HandleCloseView();
+                HandleHideView();
             }
         }
 
         public void Exit()
         {
-            _enemyView.OnHideView -= HandleCloseView;
+            _enemyView.OnHideView -= HandleHideView;
             _enemyView.Hide();
         }
 
@@ -56,7 +56,7 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleCloseView()
+        private void HandleHideView()
         {
             _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());
         }

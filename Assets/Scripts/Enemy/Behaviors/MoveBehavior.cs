@@ -11,14 +11,14 @@ namespace Game.Enemy
         private float _speed;
 
         [Inject]
-        private MapPathFinder _mapPathFinder;
+        private MapModel _mapModel;
 
         private List<Vector3> _path = new();
         private int currentTargetIndex = 0;
 
         void Start()
         {
-            _path = _mapPathFinder.FindEnemiesPath();
+            _path = _mapModel.EnemiesPath;
             StartMoving();
         }
 

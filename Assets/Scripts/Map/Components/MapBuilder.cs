@@ -12,14 +12,14 @@ namespace Game.Map
         {
             position.z = 0;
             Vector3Int tilePosition = _mapModel.Mask.WorldToCell(position);
-            GameObject building = GameObject.Instantiate(prefab, _mapModel.GetTileCenter(tilePosition), Quaternion.identity);
+            GameObject building = GameObject.Instantiate(prefab, _mapModel.GetTileCenter(tilePosition), Quaternion.identity, _mapModel.Castle.transform);
             return _mapModel.ConstructBuilding(tilePosition, building);
         }
 
-        public void RemoveBuilding(Vector3Int position)
+        public void RemoveBuilding(GameObject building)
         {
-            position.z = 0;
-            _mapModel.RemoveBuilding(position);
+            _mapModel.RemoveBuilding(building);
+            GameObject.Destroy(building);
         }
 
         public void CastSpell(Vector3 position, GameObject spell)

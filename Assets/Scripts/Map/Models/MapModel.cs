@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -21,9 +22,11 @@ namespace Game.Map
         [SerializeField]
         private GameObject _enemiesSpawn;
 
+        private List<Vector3> _enemiesPath;
+
         private int _buildingSquare = 9;
 
-        private Dictionary<Vector3, GameObject> _buildings = new();
+        private Dictionary<Vector3, GameObject> _buildingPositions = new();
 
         public Tilemap Mask => _mask;
 
@@ -35,6 +38,12 @@ namespace Game.Map
 
         public int BuildingSquare => _buildingSquare;
 
+        public List<Vector3> EnemiesPath
+        {
+            get { return _enemiesPath; }
+            set { _enemiesPath = value; }
+        }
+
         public void Start()
         {
             MakeTilesTransparent();
@@ -43,7 +52,7 @@ namespace Game.Map
 
         public bool ConstructBuilding(Vector3Int position, GameObject building)
         {
-            if (_buildings.ContainsKey(position))
+            if (_buildingPositions.ContainsKey(position))
             {
                 return false;
             }
@@ -51,19 +60,17 @@ namespace Game.Map
             List<Vector3Int> constructionArea = GetTilesArea(position, _buildingSquare);
             foreach (var tilePosition in constructionArea)
             {
-                _buildings.Add(tilePosition, building);
+                _buildingPositions.Add(tilePosition, building);
             }
 
             return true;
         }
 
-        public void RemoveBuilding(Vector3Int position)
+        public void RemoveBuilding(GameObject building)
         {
-            List<Vector3Int> constructionArea = GetTilesArea(position, _buildingSquare);
-            foreach (var tilePosition in constructionArea)
-            {
-                _buildings.Remove(tilePosition);
-            }
+            _buildingPositions = _buildingPositions
+                .Where(el => el.Value != building)
+                .ToDictionary(el => el.Key, el => el.Value);
         }
         
         public List<Vector3Int> GetTilesArea(Vector3Int center, int area)
@@ -99,7 +106,7 @@ namespace Game.Map
 
         public bool IsAvailableForBuilding(Vector3Int position)
         {
-            return _buildingGround.HasTile(position) && !_buildings.ContainsKey(position);
+            return _buildingGround.HasTile(position) && !_buildingPositions.ContainsKey(position);
         }
 
         public bool IsAvailableForBuilding(Vector3 position)
@@ -126,9 +133,9 @@ namespace Game.Map
 
         public GameObject GetBuildingByPosition(Vector3Int position)
         {
-            if (_buildings.ContainsKey(position))
+            if (_buildingPositions.ContainsKey(position))
             {
-                return _buildings[position];
+                return _buildingPositions[position];
             }
 
             return null;

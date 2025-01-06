@@ -1,4 +1,5 @@
 using Game.Core;
+using Game.Map;
 using Game.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,6 +25,9 @@ namespace Game.States
         [Inject]
         private BuildingView _buildingView;
 
+        [Inject]
+        private MapBuilder _mapBuilder;
+
         private BuildingInfoStateData _data;
 
         public void Enter() { }
@@ -33,18 +37,20 @@ namespace Game.States
             _data = data;
 
             _buildingView.Show(_data.Building);
-            _buildingView.OnHideView += HandleCloseView;
+            _buildingView.OnHideView += HandleHideView;
+            _buildingView.OnDeleteBuilding += HandleDeleteBuilding;
         }
 
         public void Update() {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                HandleCloseView();
+                HandleHideView();
             }
         }
 
         public void Exit() {
-            _buildingView.OnHideView -= HandleCloseView;
+            _buildingView.OnDeleteBuilding -= HandleDeleteBuilding;
+            _buildingView.OnHideView -= HandleHideView;
             _buildingView.Hide();
         }
 
@@ -53,9 +59,15 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleCloseView()
+        private void HandleHideView()
         {
             _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());
+        }
+
+        private void HandleDeleteBuilding()
+        {
+            _mapBuilder.RemoveBuilding(_data.Building);
+            HandleHideView();
         }
     }
 }

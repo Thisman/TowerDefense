@@ -1,5 +1,6 @@
 using Game.Core;
 using Game.Enemies;
+using Game.Environment;
 using Game.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +28,9 @@ namespace Game.States
         [Inject]
         private Spawner _spawner;
 
+        [Inject]
+        private SkyBoxController _skyBoxController;
+
         private EnemyNightStateData _data;
 
         public void Enter() { }
@@ -36,6 +40,8 @@ namespace Game.States
             _data = data;
 
             StartMusic();
+
+            _skyBoxController.SetNightLightning();
 
             _spawner.OnFinishWaves += HandleFinishWaves;
             _spawner.StartSpawnEnemies();
@@ -77,7 +83,7 @@ namespace Game.States
             _musicController.FadeVolume(0, 1, () =>
             {
                 _musicController.PlayMusic("Firesong");
-                _musicController.FadeVolume(1, 1);
+                _musicController.FadeVolume(.3f, 1);
             });
         }
 

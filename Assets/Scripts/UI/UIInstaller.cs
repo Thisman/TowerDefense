@@ -22,10 +22,6 @@ public class UIInstaller : MonoInstaller
     [SerializeField]
     private SpellBookView _spellBookView;
 
-    [SerializeField]
-    private UpgradeBuildingView _upgradeBuildingView;
-
-
     public override void InstallBindings()
     {
         Container.Bind<MenuView>().FromInstance(_menuView);
@@ -34,6 +30,5 @@ public class UIInstaller : MonoInstaller
         Container.Bind<CastleView>().FromInstance(_castleView);
         Container.Bind<BuildingView>().FromInstance(_buildingView);
         Container.Bind<SpellBookView>().FromInstance(_spellBookView);
-        Container.Bind<UpgradeBuildingView>().FromInstance(_upgradeBuildingView);
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using Zenject;
 using Game.UI;
 
-public class UIInstaller : MonoInstaller
+public class GameUIInstaller : MonoInstaller
 {
     [SerializeField]
     private MenuView _menuView;

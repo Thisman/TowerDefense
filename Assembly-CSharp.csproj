@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\UI\SpellBook\Cards\SpellCard.cs" />
     <Compile Include="Assets\Scripts\UI\Rewards\Views\RewardView.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
+    <Compile Include="Assets\Scripts\UI\GameUIInstaller.cs" />
     <Compile Include="Assets\Scripts\Environment\EnvironmentInstaller.cs" />
     <Compile Include="Assets\Scripts\Game\States\GameStates\DayState.cs" />
     <Compile Include="Assets\Scripts\UI\Menu\Buttons\GoToNextStateButton.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\Game\States\PlayerStates\BuildingInfoState.cs" />
+    <Compile Include="Assets\Scripts\Scenes\Game\GameBootstrap.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Scripts\Core\Camera\CameraController.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Assets\Scripts\UI\Building\Views\BuildingView.cs" />
     <Compile Include="Assets\Scripts\Map\Components\MapHighlighter.cs" />
     <Compile Include="Assets\Scripts\Game\States\PlayerStates\CastState.cs" />
+    <Compile Include="Assets\Scripts\Scenes\MainMenu\MainMenuBootstrap.cs" />
     <Compile Include="Assets\Scripts\Environment\Lightning\SkyBoxController.cs" />
     <Compile Include="Assets\Scripts\UI\Menu\Buttons\ChooseBuildingButton.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
@@ -100,6 +103,7 @@
     <Compile Include="Assets\Scripts\Map\Models\MapModel.cs" />
     <Compile Include="Assets\Scripts\Game\States\PlayerStates\EnemyInfoState.cs" />
     <Compile Include="Assets\Scripts\Map\Components\MapPathFinder.cs" />
+    <Compile Include="Assets\Scripts\UI\MainMenu\Views\MainMenuView.cs" />
     <Compile Include="Assets\Scripts\Enemy\Behaviors\DestroyBehavior.cs" />
     <Compile Include="Assets\Scripts\UI\Enemy\Views\EnemyView.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
@@ -118,9 +122,9 @@
     <Compile Include="Assets\Scripts\Game\FSM\PlayerFSM.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-    <Compile Include="Assets\Scripts\UI\UIInstaller.cs" />
     <Compile Include="Assets\Scripts\Building\Models\BuildingModel.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+    <Compile Include="Assets\Scripts\UI\MainMenuUIInstaller.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
@@ -141,9 +145,9 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scripts\Game\States\PlayerStates\SpellBookState.cs" />
     <Compile Include="Assets\Scripts\Game\States\PlayerStates\ConstructionState.cs" />
+    <Compile Include="Assets\Scripts\Game\States\PlayerStates\MainMenuState.cs" />
     <Compile Include="Assets\Scripts\Core\FSM\FSM.cs" />
     <Compile Include="Assets\Scripts\UI\Menu\Buttons\OpenSpellBookButton.cs" />
-    <Compile Include="Assets\Scripts\Bootstrap.cs" />
     <Compile Include="Assets\Scripts\Game\States\PlayerStates\IdleState.cs" />
     <Compile Include="Assets\Scripts\Core\UI\Cards\CardUI.cs" />
     <Compile Include="Assets\Scripts\Map\Components\MapBuilder.cs" />

@@ -16,6 +16,9 @@ namespace Game.States
         [Inject]
         private MainMenuView _mainMenuView;
 
+        [Inject]
+        private MusicController _musicController;
+
         private MainMenuStateData _data;
 
         public void Enter() { }
@@ -26,6 +29,8 @@ namespace Game.States
 
             _mainMenuView.OnGameStarted += HandleGameStarted;
             _mainMenuView.OnGameQuit += HandleQuitGame;
+
+            _musicController.PlayMusic("TowerDefense_BackgroundSound");
         }
 
         public void Update() { }
@@ -33,6 +38,8 @@ namespace Game.States
         public void Exit() {
             _mainMenuView.OnGameStarted -= HandleGameStarted;
             _mainMenuView.OnGameQuit -= HandleQuitGame;
+
+            _musicController.StopMusic();
         }
 
         public MainMenuStateData GetData()
@@ -47,7 +54,11 @@ namespace Game.States
 
         private void HandleQuitGame()
         {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
+#endif
         }
     }
 }

@@ -1,8 +1,5 @@
 using DG.Tweening;
 using Game.Enemies;
-using Game.Weapons;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Weapons
@@ -20,7 +17,7 @@ namespace Game.Weapons
 
         public void OnDestroy()
         {
-            _animation.Kill();
+            _animation?.Kill();
         }
 
         public void Update()
@@ -43,8 +40,10 @@ namespace Game.Weapons
 
         public void Explode()
         {
+            if (_animation != null) { return; }
+
             _animation = gameObject.transform.DOScale(Random.Range(_randomScaleMinOffset, _randomScaleMaxOffset), 0.2f)
-                .OnComplete(() => Destroy(gameObject));
+                .OnComplete(() => GameObject.Destroy(gameObject));
         }
     }
 }

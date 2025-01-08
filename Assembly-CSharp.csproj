@@ -66,7 +66,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Enemy\Components\Spawner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
-    <Compile Include="Assets\Scripts\Weapon\Behavior\MoveBehavior.cs" />
     <Compile Include="Assets\Scripts\Building\Behavior\AttackBehavior.cs" />
     <Compile Include="Assets\Scripts\Building\Behavior\BuffBehavior.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
@@ -74,6 +73,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\UI\SpellBook\Cards\SpellCard.cs" />
+    <Compile Include="Assets\Scripts\Bullets\Models\BulletModel.cs" />
     <Compile Include="Assets\Scripts\UI\Rewards\Views\RewardView.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Scripts\UI\GameUIInstaller.cs" />
@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\Game\States\PlayerStates\EnemyInfoState.cs" />
     <Compile Include="Assets\Scripts\Map\Components\MapPathFinder.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenu\Views\MainMenuView.cs" />
+    <Compile Include="Assets\Scripts\Bullets\Behavior\MoveBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemy\Behaviors\DestroyBehavior.cs" />
     <Compile Include="Assets\Scripts\UI\Enemy\Views\EnemyView.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
@@ -114,9 +115,9 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Scripts\Core\UI\Buttons\SpinButtonUI.cs" />
+    <Compile Include="Assets\Scripts\Bullets\Behavior\DestroyBehavior.cs" />
     <Compile Include="Assets\Scripts\Building\Models\BuildingStatsModel.cs" />
     <Compile Include="Assets\Scripts\Game\States\GameStates\RewardsState.cs" />
-    <Compile Include="Assets\Scripts\Weapon\Behavior\DestroyBehavior.cs" />
     <Compile Include="Assets\Scripts\Core\Audio\MusicController.cs" />
     <Compile Include="Assets\Scripts\Magic\TempSpell\CastBehavior.cs" />
     <Compile Include="Assets\Scripts\Game\FSM\PlayerFSM.cs" />
@@ -132,7 +133,6 @@
     <Compile Include="Assets\Scripts\Enemy\Models\EnemyModel.cs" />
     <Compile Include="Assets\Scripts\Game\GameInstaller.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
-    <Compile Include="Assets\Scripts\Weapon\Models\BulletModel.cs" />
     <Compile Include="Assets\Scripts\UI\SpellBook\Views\SpellBookView.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\Enemy\Behaviors\MoveBehavior.cs" />

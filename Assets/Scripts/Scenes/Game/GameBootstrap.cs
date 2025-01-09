@@ -22,8 +22,13 @@ namespace Game.Scenes
         [Inject]
         private MapPathFinder _mapPathFinder;
 
+        [Inject]
+        private CursorController _cursorController;
+
         public void Start()
         {
+            _cursorController.SetCursor("default");
+
             // Game States
             _gameStates.AddState<DayState, DayStateData>(_diContainer.Instantiate<DayState>());
             _gameStates.AddState<EnemyNightState, EnemyNightStateData>(_diContainer.Instantiate<EnemyNightState>());
@@ -42,6 +47,7 @@ namespace Game.Scenes
             _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());
 
             _mapModel.EnemiesPath = _mapPathFinder.FindEnemiesPath();
+
         }
 
         public void Update()

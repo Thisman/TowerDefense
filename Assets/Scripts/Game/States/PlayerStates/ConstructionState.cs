@@ -29,6 +29,9 @@ namespace Game.States
         [Inject]
         private MapHighlighter _mapHighlighter;
 
+        [Inject]
+        private CursorController _cursorController;
+
         private ConstructionStateData _data;
 
         private GameObject _tempBuilding;
@@ -42,6 +45,8 @@ namespace Game.States
         {
             _data = data;
             _tempBuilding = CreateTempBuilding();
+
+            _cursorController.SetCursor("building");
         }
 
         public void Update() {
@@ -65,13 +70,14 @@ namespace Game.States
         }
 
         public void Exit() {
+            _cursorController.SetCursor("default");
+            ResetHighlightedAreaColor();
+
             if (_tempBuilding != null)
             {
                 GameObject.Destroy(_tempBuilding);
                 _tempBuilding = null;
             }
-
-            ResetHighlightedAreaColor();
         }
 
         public ConstructionStateData GetData()

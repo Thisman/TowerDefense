@@ -23,6 +23,9 @@ namespace Game.States
         [Inject]
         private PlayerFSM _playerStates;
 
+        [Inject]
+        private CursorController _cursorController;
+
         private CastStateData _data;
         private GameObject _tempSpell;
 
@@ -32,6 +35,8 @@ namespace Game.States
         {
             _data = data;
             _tempSpell = CreateTempSpell();
+
+            _cursorController.SetCursor("magic");
         }
 
         public void Update()
@@ -54,6 +59,8 @@ namespace Game.States
 
         public void Exit()
         {
+            _cursorController.SetCursor("default");
+
             if (_tempSpell != null)
             {
                 GameObject.Destroy(_tempSpell);

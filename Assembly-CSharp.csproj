@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\UI\Rewards\Cards\RewardCard.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+    <Compile Include="Assets\Scripts\Core\Cursor\CursorController.cs" />
     <Compile Include="Assets\Scripts\Game\States\PlayerStates\BuildingInfoState.cs" />
     <Compile Include="Assets\Scripts\Scenes\Game\GameBootstrap.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />

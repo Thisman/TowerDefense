@@ -3,6 +3,7 @@ using Game.Map;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 using Zenject;
 
 namespace Game.States
@@ -17,6 +18,9 @@ namespace Game.States
         [Inject]
         private PlayerFSM _playerStates;
 
+        [Inject]
+        private CursorController _cursorController;
+
         private IdleStateData _data;
 
         public void Enter() { }
@@ -28,44 +32,48 @@ namespace Game.States
 
         public void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (!IsPointerOverUIElement())
             {
-                HandleTowerClicked();
-                HandleEnemyClicked();
+                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                GameObject hoveredBuilding = GetTowerByMousePosition(mousePosition);
+                GameObject hoveredEnemy = GetEnemyByMousePosition(mousePosition);
+
+                ChangeCursor(hoveredBuilding != null || hoveredEnemy != null);
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (hoveredBuilding != null)
+                    {
+                        HandleTowerClicked(hoveredBuilding);
+                    } else if (hoveredEnemy != null)
+                    {
+                        HandleEnemyClicked(hoveredEnemy);
+                    }
+                }
             }
         }
 
-        public void Exit() { }
+        public void Exit() {
+            ChangeCursor(false);
+        }
 
         public IdleStateData GetData()
         {
             return _data;
         }
 
-        private void HandleTowerClicked()
+        private void HandleTowerClicked(GameObject building)
         {
-            if (IsPointerOverUIElement())
-            {
-                return;
-            }
-
-            Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            position.z = 0;
-            GameObject building = _mapModel.GetBuildingByPosition(position);
-
-            if (building)
-            {
-                _playerStates.SwitchState<BuildingInfoState, BuildingInfoStateData>(new BuildingInfoStateData(building));
-            }
+            _playerStates.SwitchState<BuildingInfoState, BuildingInfoStateData>(new BuildingInfoStateData(building));
         }
 
-        private void HandleEnemyClicked()
+        private void HandleEnemyClicked(GameObject enemy)
         {
-            if (IsPointerOverUIElement())
-            {
-                return;
-            }
+            _playerStates.SwitchState<EnemyInfoState, EnemyInfoStateData>(new EnemyInfoStateData(enemy));
+        }
 
+        private GameObject GetEnemyByMousePosition(Vector2 position)
+        {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
@@ -74,9 +82,16 @@ namespace Game.States
                 GameObject target = hit.collider.gameObject;
                 if (target.CompareTag("Enemy"))
                 {
-                    _playerStates.SwitchState<EnemyInfoState, EnemyInfoStateData>(new EnemyInfoStateData(target));
+                    return target;
                 }
             }
+
+            return null;
+        }
+
+        private GameObject GetTowerByMousePosition(Vector2 position)
+        {
+            return _mapModel.GetBuildingByPosition(position);
         }
         
         private bool IsPointerOverUIElement()
@@ -90,6 +105,17 @@ namespace Game.States
             EventSystem.current.RaycastAll(pointerEventData, raycastResults);
 
             return raycastResults.Count > 0;
+        }
+
+        private void ChangeCursor(bool isTowerOrEnemyHovered)
+        {
+            if (isTowerOrEnemyHovered)
+            {
+                _cursorController.SetCursor("info");
+            } else
+            {
+                _cursorController.SetCursor("default");
+            }
         }
     }
 }

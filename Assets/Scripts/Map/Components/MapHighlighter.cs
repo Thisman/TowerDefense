@@ -72,7 +72,7 @@ namespace Game.Map
 
         public void HighlightAreaForBuilding(Vector3Int center)
         {
-            List<Vector3Int> highlightedArea = _mapModel.GetTilesArea(center, _mapModel.BuildingDestroySquare);
+            List<Vector3Int> highlightedArea = _mapModel.GetTilesArea(center, _mapModel.BuildingSquare);
             List<Color> colors = GetTilesColor(highlightedArea);
             HighlightArea(highlightedArea, colors);
         }

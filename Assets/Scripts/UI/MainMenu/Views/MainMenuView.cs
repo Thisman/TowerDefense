@@ -37,7 +37,7 @@ namespace Game.UI
 
         private void HandleQuitGameButtonClicked()
         {
-            OnGameStarted?.Invoke();
+            OnGameQuit?.Invoke();
         }
     }
 }

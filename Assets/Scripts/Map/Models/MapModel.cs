@@ -59,7 +59,7 @@ namespace Game.Map
             _maskLayer.gameObject.SetActive(true);
         }
 
-        public bool ConstructBuilding(Vector3Int position, GameObject building, List<Vector3Int> constructionArea)
+        public bool AddBuildingToMap(Vector3Int position, GameObject building, List<Vector3Int> constructionArea)
         {
             if (_buildingPositions.ContainsKey(position))
             {
@@ -74,7 +74,7 @@ namespace Game.Map
             return true;
         }
 
-        public void RemoveBuilding(GameObject building)
+        public void RemoveBuildingFromMap(GameObject building)
         {
             _buildingPositions = _buildingPositions
                 .Where(el => el.Value != building)

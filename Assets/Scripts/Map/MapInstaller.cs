@@ -14,5 +14,6 @@ public class MapInstaller : MonoInstaller
         Container.Bind<MapBuilder>().AsSingle();
         Container.Bind<MapPathFinder>().AsSingle();
         Container.Bind<MapHighlighter>().AsSingle();
+        Container.Bind<MapTerraformer>().AsSingle();
     }
 }

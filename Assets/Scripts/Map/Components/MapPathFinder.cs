@@ -14,8 +14,8 @@ namespace Game.Map
             // Convert world positions to grid positions
             Vector3 startPosition = _mapModel.EnemiesSpawn.gameObject.transform.position;
             Vector3 targetPosition = _mapModel.Castle.gameObject.transform.position;
-            Vector3Int startGridPos = _mapModel.Mask.WorldToCell(startPosition);
-            Vector3Int targetGridPos = _mapModel.Mask.WorldToCell(targetPosition);
+            Vector3Int startGridPos = _mapModel.MaskLayer.WorldToCell(startPosition);
+            Vector3Int targetGridPos = _mapModel.MaskLayer.WorldToCell(targetPosition);
 
             // Initialize open and closed sets
             HashSet<Vector3Int> closedSet = new();
@@ -23,7 +23,7 @@ namespace Game.Map
             Dictionary<Vector3Int, Node> allNodes = new();
 
             // Create the start node
-            Node startNode = new(startGridPos, _mapModel.Mask.GetCellCenterWorld(startGridPos), null, 0, GetHeuristic(startGridPos, targetGridPos));
+            Node startNode = new(startGridPos, _mapModel.MaskLayer.GetCellCenterWorld(startGridPos), null, 0, GetHeuristic(startGridPos, targetGridPos));
             openSet.Enqueue(startNode);
             allNodes[startGridPos] = startNode;
 
@@ -50,7 +50,7 @@ namespace Game.Map
 
                     if (!allNodes.TryGetValue(neighbor, out Node neighborNode))
                     {
-                        neighborNode = new Node(neighbor, _mapModel.Mask.GetCellCenterWorld(neighbor), currentNode, gCost, GetHeuristic(neighbor, targetGridPos));
+                        neighborNode = new Node(neighbor, _mapModel.MaskLayer.GetCellCenterWorld(neighbor), currentNode, gCost, GetHeuristic(neighbor, targetGridPos));
                         allNodes[neighbor] = neighborNode;
                         openSet.Enqueue(neighborNode);
                     }

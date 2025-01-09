@@ -50,7 +50,7 @@ namespace Game.States
         }
 
         public void Update() {
-            ResetHighlightedAreaColor();
+            ResetHighlightedArea();
             HighlightArea();
 
             if (_tempBuilding != null)
@@ -60,22 +60,21 @@ namespace Game.States
 
             if (Input.GetMouseButtonDown(0))
             {
-                HandleBuildConstructed();
+                HandleConfirmBuilding();
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());
+                HandleCancelBuilding();
             }
         }
 
         public void Exit() {
             _cursorController.SetCursor("default");
-            ResetHighlightedAreaColor();
+            ResetHighlightedArea();
 
             if (_tempBuilding != null)
             {
-                GameObject.Destroy(_tempBuilding);
                 _tempBuilding = null;
             }
         }
@@ -85,12 +84,18 @@ namespace Game.States
             return _data;
         }
 
-        private void HandleBuildConstructed()
+        private void HandleCancelBuilding()
+        {
+            GameObject.Destroy(_tempBuilding);
+            _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());
+        }
+
+        private void HandleConfirmBuilding()
         {
             Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position.z = 0;
-            bool canBuild = _highlightedArea.FindAll(position => !_mapModel.IsAvailableForBuilding(position)).Count == 0;
-            if (canBuild &&_mapBuilder.ConstructBuilding(position, _data.Building))
+            _tempBuilding.gameObject.layer = 0;
+            if (_mapBuilder.ConstructBuilding(position, _tempBuilding, _highlightedArea))
             {
                 _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());
             }
@@ -100,7 +105,7 @@ namespace Game.States
         {
             Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position.z = 0;
-            Vector3Int tilePosition = _mapModel.Mask.WorldToCell(position);
+            Vector3Int tilePosition = _mapModel.MaskLayer.WorldToCell(position);
             return GameObject.Instantiate(_data.Building, _mapModel.GetTileCenter(tilePosition), Quaternion.identity);
         }
 
@@ -108,19 +113,19 @@ namespace Game.States
         {
             Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position.z = 0;
-            Vector3Int tilePosition = _mapModel.Mask.WorldToCell(position);
+            Vector3Int tilePosition = _mapModel.MaskLayer.WorldToCell(position);
             _tempBuilding.transform.position = _mapModel.GetTileCenter(tilePosition);
         }
 
         private void HighlightArea()
         {
             Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            _highlightedArea = _mapModel.GetTilesArea(position, _mapModel.BuildingSquare);
+            _highlightedArea = _mapModel.GetTilesArea(position, _mapModel.BuildingDestroySquare);
             List<Color> colors = GetTilesColor(_highlightedArea);
             _mapHighlighter.HighlightArea(_highlightedArea, colors);
         }
 
-        private void ResetHighlightedAreaColor()
+        private void ResetHighlightedArea()
         {
             if (_highlightedArea != null)
             {

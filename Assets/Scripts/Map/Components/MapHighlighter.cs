@@ -13,31 +13,31 @@ namespace Game.Map
 
         public void HighlightTile(Vector3Int position, Color color)
         {
-            if (mapModel.Mask.GetTileFlags(position) != TileFlags.None)
+            if (mapModel.MaskLayer.GetTileFlags(position) != TileFlags.None)
             {
-                mapModel.Mask.SetTileFlags(position, TileFlags.None);
+                mapModel.MaskLayer.SetTileFlags(position, TileFlags.None);
             }
 
             color.a = 0.5f;
-            mapModel.Mask.SetColor(position, color);
+            mapModel.MaskLayer.SetColor(position, color);
         }
 
         public void ResetTileHighlight(Vector3Int position)
         {
             Color color = Color.white;
             color.a = 0;
-            mapModel.Mask.SetColor(position, color);
+            mapModel.MaskLayer.SetColor(position, color);
         }
 
         public void ResetTileHighlight(Vector3 position)
         {
-            Vector3Int tilePosition = mapModel.Mask.WorldToCell(position);
+            Vector3Int tilePosition = mapModel.MaskLayer.WorldToCell(position);
             ResetTileHighlight(tilePosition);
         }
 
         public void HighlightTile(Vector3 position, Color color)
         {
-            Vector3Int tilePosition = mapModel.Mask.WorldToCell(position);
+            Vector3Int tilePosition = mapModel.MaskLayer.WorldToCell(position);
             HighlightTile(tilePosition, color);
         }
 
@@ -53,7 +53,7 @@ namespace Game.Map
         {
             foreach (var position in path)
             {
-                Vector3Int tilePosition = mapModel.Mask.WorldToCell(position);
+                Vector3Int tilePosition = mapModel.MaskLayer.WorldToCell(position);
                 HighlightTile(tilePosition, color);
             }
         }

@@ -8,13 +8,16 @@ namespace Game.Map
     public class MapModel: MonoBehaviour
     {
         [SerializeField]
-        private Tilemap _mask;
+        private Tilemap _maskLayer;
 
         [SerializeField]
-        private Tilemap _buildingGround;
+        private Tilemap _propsLayer;
 
         [SerializeField]
-        private Tilemap _enemiesRoad;
+        private Tilemap _buildingLayer;
+
+        [SerializeField]
+        private Tilemap _roadLayer;
 
         [SerializeField]
         private GameObject _castle;
@@ -26,17 +29,23 @@ namespace Game.Map
 
         private int _buildingSquare = 9;
 
+        private int _buildingDestroySquare = 25;
+
         private Dictionary<Vector3, GameObject> _buildingPositions = new();
 
-        public Tilemap Mask => _mask;
+        public Tilemap MaskLayer => _maskLayer;
 
-        public Tilemap BuildingGround => _buildingGround;
+        public Tilemap BuildingLayer => _buildingLayer;
+
+        public Tilemap PropsLayer => _propsLayer;
 
         public GameObject Castle => _castle;
 
         public GameObject EnemiesSpawn => _enemiesSpawn;
 
         public int BuildingSquare => _buildingSquare;
+
+        public int BuildingDestroySquare => _buildingDestroySquare;
 
         public List<Vector3> EnemiesPath
         {
@@ -47,17 +56,16 @@ namespace Game.Map
         public void Start()
         {
             MakeTilesTransparent();
-            _mask.gameObject.SetActive(true);
+            _maskLayer.gameObject.SetActive(true);
         }
 
-        public bool ConstructBuilding(Vector3Int position, GameObject building)
+        public bool ConstructBuilding(Vector3Int position, GameObject building, List<Vector3Int> constructionArea)
         {
             if (_buildingPositions.ContainsKey(position))
             {
                 return false;
             }
 
-            List<Vector3Int> constructionArea = GetTilesArea(position, _buildingSquare);
             foreach (var tilePosition in constructionArea)
             {
                 _buildingPositions.Add(tilePosition, building);
@@ -100,34 +108,34 @@ namespace Game.Map
 
         public List<Vector3Int> GetTilesArea(Vector3 center, int area)
         {
-            Vector3Int tilePosition = _mask.WorldToCell(center);
+            Vector3Int tilePosition = _maskLayer.WorldToCell(center);
             return GetTilesArea(tilePosition, area);
         }
 
         public bool IsAvailableForBuilding(Vector3Int position)
         {
-            return _buildingGround.HasTile(position) && !_buildingPositions.ContainsKey(position);
+            return _buildingLayer.HasTile(position) && !_buildingPositions.ContainsKey(position);
         }
 
         public bool IsAvailableForBuilding(Vector3 position)
         {
-            Vector3Int tilePosition = _mask.WorldToCell(position);
+            Vector3Int tilePosition = _maskLayer.WorldToCell(position);
             return IsAvailableForBuilding(tilePosition);
         }
 
         public bool IsAvailableForWalk(Vector3Int position)
         {
-            return _enemiesRoad.HasTile(position);
+            return _roadLayer.HasTile(position);
         }
         
         public Vector3 GetTileCenter(Vector3Int position)
         {
-            return _mask.GetCellCenterWorld(position);
+            return _maskLayer.GetCellCenterWorld(position);
         }
 
         public Vector3 GetTileCenter(Vector3 position)
         {
-            Vector3Int tilePosition = _mask.WorldToCell(position);
+            Vector3Int tilePosition = _maskLayer.WorldToCell(position);
             return GetTileCenter(tilePosition);
         }
 
@@ -143,26 +151,26 @@ namespace Game.Map
 
         public GameObject GetBuildingByPosition(Vector3 position)
         {
-            Vector3Int tilePosition = _mask.WorldToCell(position);
+            Vector3Int tilePosition = _maskLayer.WorldToCell(position);
             return GetBuildingByPosition(tilePosition);
         }
 
         private void MakeTilesTransparent()
         {
-            BoundsInt bounds = _mask.cellBounds;
+            BoundsInt bounds = _maskLayer.cellBounds;
 
             for (int x = bounds.xMin; x < bounds.xMax; x++)
             {
                 for (int y = bounds.yMin; y < bounds.yMax; y++)
                 {
                     Vector3Int position = new Vector3Int(x, y, 0);
-                    _mask.SetTileFlags(position, TileFlags.None);
-                    if (_mask.HasTile(position))
+                    _maskLayer.SetTileFlags(position, TileFlags.None);
+                    if (_maskLayer.HasTile(position))
                     {
-                        Color tileColor = _mask.GetColor(position);
+                        Color tileColor = _maskLayer.GetColor(position);
 
                         tileColor.a = 0;
-                        _mask.SetColor(position, tileColor);
+                        _maskLayer.SetColor(position, tileColor);
                     }
                 }
             }

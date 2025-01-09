@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1869315837
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 22490a14f9fc42b4092aa4106b0d17d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -162,7 +162,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 56e5dcf6660281d4db1548c2d0d494fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -249,6 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _avatar: {fileID: 21300000, guid: 56e5dcf6660281d4db1548c2d0d494fc, type: 3}
+  _square: 9
   _description: "\"\u0410\u0440\u0445\u0438\u0442\u0435\u043A\u0442\u0443\u0440\u0430
     \u2014 \u044D\u0442\u043E \u0437\u0430\u0441\u0442\u044B\u0432\u0448\u0430\u044F
     \u043C\u0443\u0437\u044B\u043A\u0430. \u0410 \u044D\u0442\u0430 \u0431\u0430\u0448\u043D\u044F
@@ -261,7 +262,6 @@ MonoBehaviour:
     \u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0439 \u0430\u0440\u0445\u0438\u0442\u0435\u043A\u0442\u043E\u0440
     \u0441 \u0441\u043E\u043C\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C\u0438
     \u043F\u0440\u0438\u043E\u0440\u0438\u0442\u0435\u0442\u0430\u043C\u0438."
-  _square: 9
 --- !u!114 &459846071533854893
 MonoBehaviour:
   m_ObjectHideFlags: 0

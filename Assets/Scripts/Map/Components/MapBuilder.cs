@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -8,12 +9,19 @@ namespace Game.Map
         [Inject]
         private MapModel _mapModel;
 
-        public bool ConstructBuilding(Vector3 position, GameObject prefab)
+        [Inject]
+        private MapTerraformer _mapTerraformer;
+
+        public bool ConstructBuilding(Vector3 position, GameObject building, List<Vector3Int> constructionArea)
         {
             position.z = 0;
-            Vector3Int tilePosition = _mapModel.Mask.WorldToCell(position);
-            GameObject building = GameObject.Instantiate(prefab, _mapModel.GetTileCenter(tilePosition), Quaternion.identity, _mapModel.Castle.transform);
-            return _mapModel.ConstructBuilding(tilePosition, building);
+            Vector3Int tilePosition = _mapModel.MaskLayer.WorldToCell(position);
+            bool canBuild = constructionArea.FindAll(position => !_mapModel.IsAvailableForBuilding(position)).Count == 0;
+            if (!canBuild) { return false; }
+
+            List<Vector3Int> buildingDestroyArea = _mapModel.GetTilesArea(position, _mapModel.BuildingDestroySquare);
+            _mapTerraformer.HidePropsInArea(buildingDestroyArea);
+            return _mapModel.ConstructBuilding(tilePosition, building, constructionArea);
         }
 
         public void RemoveBuilding(GameObject building)

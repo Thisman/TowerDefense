@@ -1,5 +1,7 @@
 # Yet Another Tower Defense
 
+![Main Menu Screenshot](./Docs/Images/MainMenuScreenshot.png)
+
 ## Оглавление
 - [Жанр и синописис](#основное)
 - [Стиль игры](#стиль-игры)

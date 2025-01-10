@@ -30,6 +30,9 @@ namespace Game.States
         private MapHighlighter _mapHighlighter;
 
         [Inject]
+        private MapTerraformer _mapTerraformer;
+
+        [Inject]
         private CursorController _cursorController;
 
         private ConstructionStateData _data;
@@ -51,8 +54,10 @@ namespace Game.States
             if (_tempBuilding != null)
             {
                 _mapHighlighter.ResetAreaHighlightForBuilding(_tempBuilding.transform.position);
+                _mapTerraformer.ShowPropsInArea(_tempBuilding.transform.position);
                 MoveTempBuilding();
                 _mapHighlighter.HighlightAreaForBuilding(_tempBuilding.transform.position);
+                _mapTerraformer.HidePropsInArea(_tempBuilding.transform.position);
             }
 
             if (Input.GetMouseButtonDown(0))

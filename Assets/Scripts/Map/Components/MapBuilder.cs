@@ -22,7 +22,7 @@ namespace Game.Map
             bool canBuild = constructionArea.FindAll(position => !_mapModel.IsAvailableForBuilding(position)).Count == 0;
             if (!canBuild) { return false; }
 
-            _mapTerraformer.HidePropsInArea(buildingDestroyArea);
+            _mapTerraformer.RemovePropsInArea(buildingDestroyArea);
             return _mapModel.AddBuildingToMap(tilePosition, building, constructionArea);
         }
 

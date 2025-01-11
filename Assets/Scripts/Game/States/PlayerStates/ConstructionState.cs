@@ -1,3 +1,4 @@
+using Game.Building;
 using Game.Core;
 using Game.Map;
 using System.Collections.Generic;
@@ -35,6 +36,8 @@ namespace Game.States
         [Inject]
         private CursorController _cursorController;
 
+        private BuildingHighlighter _buildingHighlighter;
+
         private ConstructionStateData _data;
 
         private GameObject _tempBuilding;
@@ -44,20 +47,22 @@ namespace Game.States
         public void Enter(ConstructionStateData data)
         {
             _data = data;
+            _cursorController.SetCursor("building");
             _tempBuilding = HandleStartConstruction();
 
-            _cursorController.SetCursor("building");
+            _buildingHighlighter = _tempBuilding.GetComponent<BuildingHighlighter>();
+            _buildingHighlighter.ShowEffectArea();
         }
 
-        public void Update() {
-
+        public void Update()
+        {
             if (_tempBuilding != null)
             {
-                _mapHighlighter.ResetAreaHighlightForBuilding(_tempBuilding.transform.position);
                 _mapTerraformer.ShowPropsInArea(_tempBuilding.transform.position);
+                _mapHighlighter.ResetAreaHighlightForBuilding(_tempBuilding.transform.position);
                 MoveTempBuilding();
-                _mapHighlighter.HighlightAreaForBuilding(_tempBuilding.transform.position);
                 _mapTerraformer.HidePropsInArea(_tempBuilding.transform.position);
+                _mapHighlighter.HighlightAreaForBuilding(_tempBuilding.transform.position);
             }
 
             if (Input.GetMouseButtonDown(0))
@@ -73,7 +78,10 @@ namespace Game.States
 
         public void Exit() {
             _cursorController.SetCursor("default");
+            _mapTerraformer.ShowPropsInArea(_tempBuilding.transform.position);
             _mapHighlighter.ResetAreaHighlightForBuilding(_tempBuilding.transform.position);
+
+            _buildingHighlighter.HideEffectArea();
 
             if (_tempBuilding != null)
             {
@@ -108,7 +116,7 @@ namespace Game.States
             Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position.z = 0;
             Vector3Int tilePosition = _mapModel.MaskLayer.WorldToCell(position);
-            return GameObject.Instantiate(_data.Building, _mapModel.GetTileCenter(tilePosition), Quaternion.identity);
+            return GameObject.Instantiate(_data.Building, _mapModel.GetTileCenter(tilePosition), Quaternion.identity, _mapModel.Castle.transform);
         }
 
         private void MoveTempBuilding()

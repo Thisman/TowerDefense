@@ -1,3 +1,5 @@
+using Game.Building;
+using Game.Buildings;
 using Game.Core;
 using Game.Map;
 using Game.UI;
@@ -26,6 +28,8 @@ namespace Game.States
         [Inject]
         private MapBuilder _mapBuilder;
 
+        private BuildingHighlighter _buildingHighlighter;
+
         private BuildingInfoStateData _data;
 
         public void Enter() { }
@@ -37,6 +41,9 @@ namespace Game.States
             _buildingView.Show(_data.Building);
             _buildingView.OnViewHidden += HandleViewHidden;
             _buildingView.OnBuildingDeleted += HandleBuildDeleted;
+
+            _buildingHighlighter = _data.Building.GetComponent<BuildingHighlighter>();
+            _buildingHighlighter.ShowEffectArea();
         }
 
         public void Update() {
@@ -50,6 +57,8 @@ namespace Game.States
             _buildingView.OnBuildingDeleted -= HandleBuildDeleted;
             _buildingView.OnViewHidden -= HandleViewHidden;
             _buildingView.Hide();
+
+            _buildingHighlighter.HideEffectArea();
         }
 
         public BuildingInfoStateData GetData()

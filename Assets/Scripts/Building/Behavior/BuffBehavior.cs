@@ -6,14 +6,14 @@ namespace Game.Buildings
     public class BuffBehavior : MonoBehaviour
     {
         [SerializeField]
-        private float _reloadTimeSec = .3f;
+        private float _buffReloadTimeSec = .3f;
 
         public void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("AttackTower"))
             {
                 BuildingStatsModel buildingStatsModel = other.GetComponent<BuildingStatsModel>();
-                buildingStatsModel.ReloadTimeSec -= _reloadTimeSec;
+                buildingStatsModel.ReloadTimeSec -= _buffReloadTimeSec;
             }
         }
 
@@ -22,7 +22,7 @@ namespace Game.Buildings
             if (other.gameObject.CompareTag("AttackTower"))
             {
                 BuildingStatsModel buildingStatsModel = other.GetComponent<BuildingStatsModel>();
-                buildingStatsModel.ReloadTimeSec += _reloadTimeSec;
+                buildingStatsModel.ReloadTimeSec += _buffReloadTimeSec;
             }
         }
     }

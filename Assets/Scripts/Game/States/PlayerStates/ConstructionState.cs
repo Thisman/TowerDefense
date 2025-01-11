@@ -41,6 +41,9 @@ namespace Game.States
         [Inject]
         private ResourcesModel _resourcesModel;
 
+        [Inject]
+        private DiContainer _diContainer;
+
         private BuildingHighlighter _buildingHighlighter;
 
         private ConstructionStateData _data;
@@ -123,7 +126,7 @@ namespace Game.States
             Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position.z = 0;
             Vector3Int tilePosition = _mapModel.MaskLayer.WorldToCell(position);
-            return GameObject.Instantiate(_data.Building, _mapModel.GetTileCenter(tilePosition), Quaternion.identity, _mapModel.Castle.transform);
+            return _diContainer.InstantiatePrefab(_data.Building, _mapModel.GetTileCenter(tilePosition), Quaternion.identity, _mapModel.Castle.transform);
         }
 
         private void MoveTempBuilding()

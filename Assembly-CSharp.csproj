@@ -138,6 +138,7 @@
     <Compile Include="Assets\Scripts\Game\GameInstaller.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Building\Components\BuildingHighlighter.cs" />
+    <Compile Include="Assets\Scripts\Building\Behavior\MiningBehavior.cs" />
     <Compile Include="Assets\Scripts\UI\SpellBook\Views\SpellBookView.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\Enemy\Behaviors\MoveBehavior.cs" />

@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: -6800635218074656776}
   - component: {fileID: 67142138051488717}
   - component: {fileID: 7087198857851742222}
-  - component: {fileID: 4413739665302654902}
+  - component: {fileID: -5845858528774049928}
   m_Layer: 6
   m_Name: MiningTower
   m_TagString: MiningTower
@@ -405,7 +405,7 @@ MonoBehaviour:
   fillColor: {r: 1, g: 0.5, b: 0.5, a: 0.5}
   _lineRenderer: {fileID: 6648326847526520879}
   _fillObject: {fileID: 5576239351183457847}
---- !u!114 &4413739665302654902
+--- !u!114 &-5845858528774049928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -414,10 +414,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2921986053269746160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb6cb1e2cbdf5b4b9ab6bb708d42053, type: 3}
+  m_Script: {fileID: 11500000, guid: efb4b1f04e8fa9349bc685b2523f9688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadTimeSec: 0.3
+  _buildingStatsModel: {fileID: 67142138051488717}
+  _miningMoneyCount: 25
 --- !u!1 &5576239351183457847
 GameObject:
   m_ObjectHideFlags: 0

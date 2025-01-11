@@ -25,10 +25,7 @@ namespace Game.Buildings
 
             if (_shootTimer <= 0f)
             {
-                if (!_targets.IsEmpty() && _targets[0] != null)
-                {
-                    ShootAtTargetObject(_targets[0]);
-                }
+                ShootAtTargetObject();
                 _shootTimer = _buildingStatsModel.ReloadTimeSec;
             }
         }
@@ -58,10 +55,13 @@ namespace Game.Buildings
             }
         }
 
-        private void ShootAtTargetObject(EnemyModel target)
+        private void ShootAtTargetObject()
         {
-            BulletModel bulletModel = Instantiate(_tempBulletPrefab, gameObject.transform.position, Quaternion.identity);
-            bulletModel.TargetEnemy = target;
+            if (!_targets.IsEmpty() && _targets[0] != null)
+            {
+                BulletModel bulletModel = Instantiate(_tempBulletPrefab, gameObject.transform.position, Quaternion.identity);
+                bulletModel.TargetEnemy = _targets[0];
+            }
         }
     }
 }

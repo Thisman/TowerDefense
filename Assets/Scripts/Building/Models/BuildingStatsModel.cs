@@ -11,7 +11,7 @@ namespace Game.Buildings
         [SerializeField]
         private float _effectArea;
 
-        [SerializeField]
+        [SerializeField] 
         private CircleCollider2D _circleCollider2d;
 
         public void Start()

@@ -68,12 +68,14 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Scripts\Building\Behavior\AttackBehavior.cs" />
     <Compile Include="Assets\Scripts\Building\Behavior\BuffBehavior.cs" />
+    <Compile Include="Assets\Scripts\Castle\CastleInstaller.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\UI\SpellBook\Cards\SpellCard.cs" />
     <Compile Include="Assets\Scripts\Bullets\Models\BulletModel.cs" />
+    <Compile Include="Assets\Scripts\Castle\Models\ResourcesModel.cs" />
     <Compile Include="Assets\Scripts\UI\Rewards\Views\RewardView.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Scripts\UI\GameUIInstaller.cs" />

@@ -1,4 +1,6 @@
 using Game.Building;
+using Game.Buildings;
+using Game.Castle;
 using Game.Core;
 using Game.Map;
 using System.Collections.Generic;
@@ -35,6 +37,9 @@ namespace Game.States
 
         [Inject]
         private CursorController _cursorController;
+
+        [Inject]
+        private ResourcesModel _resourcesModel;
 
         private BuildingHighlighter _buildingHighlighter;
 
@@ -96,6 +101,8 @@ namespace Game.States
 
         private void HandleCancelConstruction()
         {
+            BuildingModel buildingModel = _tempBuilding.GetComponent<BuildingModel>();
+            _resourcesModel.ChangeMoney(buildingModel.Price);
             GameObject.Destroy(_tempBuilding);
             _playerStates.SwitchState<IdleState, IdleStateData>(new IdleStateData());
         }

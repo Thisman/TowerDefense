@@ -355,8 +355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f7bb068a3e4b649bd38232d472329b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _avatar: {fileID: 21300000, guid: 60046171ef7b7f5449783bd35857afe6, type: 3}
+  _price: 25
   _square: 9
+  _avatar: {fileID: 21300000, guid: 60046171ef7b7f5449783bd35857afe6, type: 3}
   _description: "\"\u041D\u0430\u0441\u0442\u043E\u044F\u0449\u0438\u0439 \u0430\u0440\u0445\u0438\u0442\u0435\u043A\u0442\u043E\u0440
     \u043D\u0435 \u043F\u0440\u043E\u0441\u0442\u043E \u0441\u043E\u0437\u0434\u0430\u0435\u0442
     \u0437\u0434\u0430\u043D\u0438\u044F, \u043E\u043D \u0443\u0447\u0438\u0442 \u043F\u0440\u0438\u0440\u043E\u0434\u0443

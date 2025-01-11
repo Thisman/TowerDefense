@@ -1,5 +1,6 @@
 using Game.Building;
 using Game.Buildings;
+using Game.Castle;
 using Game.Core;
 using Game.Map;
 using Game.UI;
@@ -27,6 +28,9 @@ namespace Game.States
 
         [Inject]
         private MapBuilder _mapBuilder;
+
+        [Inject]
+        private ResourcesModel _resourcesModel;
 
         private BuildingHighlighter _buildingHighlighter;
 
@@ -73,6 +77,8 @@ namespace Game.States
 
         private void HandleBuildDeleted()
         {
+            BuildingModel buildingModel = _data.Building.GetComponent<BuildingModel>();
+            _resourcesModel.ChangeMoney(buildingModel.Price);
             _mapBuilder.RemoveBuilding(_data.Building);
             HandleViewHidden();
         }

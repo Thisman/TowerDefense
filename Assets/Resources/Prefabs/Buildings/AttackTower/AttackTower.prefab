@@ -386,8 +386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f7bb068a3e4b649bd38232d472329b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _avatar: {fileID: 21300000, guid: 56e5dcf6660281d4db1548c2d0d494fc, type: 3}
+  _price: 10
   _square: 9
+  _avatar: {fileID: 21300000, guid: 56e5dcf6660281d4db1548c2d0d494fc, type: 3}
   _description: "\"\u0410\u0440\u0445\u0438\u0442\u0435\u043A\u0442\u0443\u0440\u0430
     \u2014 \u044D\u0442\u043E \u0437\u0430\u0441\u0442\u044B\u0432\u0448\u0430\u044F
     \u043C\u0443\u0437\u044B\u043A\u0430. \u0410 \u044D\u0442\u0430 \u0431\u0430\u0448\u043D\u044F

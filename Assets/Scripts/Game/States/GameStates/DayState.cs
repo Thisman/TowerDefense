@@ -2,6 +2,8 @@ using Game.Core;
 using UnityEngine;
 using Zenject;
 using Game.Environment;
+using Game.Buildings;
+using Game.Castle;
 
 namespace Game.States
 {
@@ -23,6 +25,9 @@ namespace Game.States
 
         [Inject]
         private SkyBoxController _skyBoxController;
+
+        [Inject]
+        private ResourcesModel _resourcesModel;
 
         private DayStateData _data;
 
@@ -55,7 +60,11 @@ namespace Game.States
 
         private void HandleBuildingChosen(GameObject building)
         {
-            _playerStates.SwitchState<ConstructionState, ConstructionStateData>(new ConstructionStateData(building));
+            BuildingModel buildingModel = building.GetComponent<BuildingModel>();
+            if (_resourcesModel.ChangeMoney(-buildingModel.Price))
+            {
+                _playerStates.SwitchState<ConstructionState, ConstructionStateData>(new ConstructionStateData(building));
+            }
         }
 
         private void HandleDayEnded()

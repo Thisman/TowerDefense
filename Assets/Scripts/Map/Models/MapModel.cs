@@ -29,7 +29,7 @@ namespace Game.Map
 
         private int _buildingSquare = 9;
 
-        private int _buildingDestroySquare = 25;
+        private int _buildingDestroySquare = 81;
 
         private Dictionary<Vector3, GameObject> _buildingPositions = new();
 

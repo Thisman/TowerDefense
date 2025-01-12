@@ -27,9 +27,9 @@ namespace Game.Map
 
         private List<Vector3> _enemiesPath;
 
-        private int _buildingSquare = 9;
+        private int _buildingSquare = 121;
 
-        private int _buildingDestroySquare = 81;
+        private int _buildingDestroySquare = 169;
 
         private Dictionary<Vector3, GameObject> _buildingPositions = new();
 

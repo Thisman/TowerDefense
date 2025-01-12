@@ -1,0 +1,136 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Animated Terrains-16 frames.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Animated Terrains-8 frames-with transparency.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Animated Terrains2-16 frames-with transparency.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Animated Terrains2-16 frames.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Animated Terrains2-8 frames-with transparency.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 1-transp.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 3-transp.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 3.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 5-transp.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 6-transp.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 6.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 7-transp.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 7.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 8.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Atlas-Props-Sprites.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Atlas-Props.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Atlas-Props2.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/garden border.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/waterfall - blood.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/waterfall.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Resources/Prefabs/Map/TiledMap.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 191,
+                "y": 486
+            }
+        },
+        "Resources/Prefabs/Map/TowerDefenseMap.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 294,
+                "y": 578
+            }
+        }
+    },
+    "last.externalTilesetPath": "D:/Projects/TowerDefense/Assets/ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets",
+    "map.fixedSize": false,
+    "map.lastUsedFormat": "tmx",
+    "map.renderOrder": "2",
+    "openFiles": [
+    ],
+    "project": "TowerDefense.tiled-project",
+    "recentFiles": [
+        "Resources/Prefabs/Map/TiledMap.tmx",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Atlas-Props.tsx",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 6.tsx",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 6-transp.tsx",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 7-transp.tsx",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Tileset - wall 8.tsx",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/waterfall.tsx",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/waterfall - blood.tsx",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Atlas-Props-Sprites.tsx",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/garden border.tsx",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Atlas-Props2.tsx",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Animated Terrains2-16 frames.tsx"
+    ],
+    "tileset.lastUsedFilter": "Файлы набора тайлов Tiled (*.tsx *.xml)"
+}

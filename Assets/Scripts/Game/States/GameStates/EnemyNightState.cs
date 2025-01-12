@@ -44,6 +44,8 @@ namespace Game.States
 
             _menuView.OnSpellBookOpened += HandleSpellBookOpened;
             _menuView.OnStateChanged += HandleNightEnded;
+
+            _menuView.UpdateEnemySpawnInfo(true);
         }
 
         public void Update() { }
@@ -57,6 +59,7 @@ namespace Game.States
             _menuView.SwitchGoToNextButtonState(false);
             _menuView.OnSpellBookOpened -= HandleSpellBookOpened;
             _menuView.OnStateChanged -= HandleNightEnded;
+            _menuView.UpdateEnemySpawnInfo(false);
         }
 
         public EnemyNightStateData GetData()

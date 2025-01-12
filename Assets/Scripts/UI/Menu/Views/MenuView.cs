@@ -20,6 +20,9 @@ public class MenuView : MonoBehaviour
     [SerializeField]
     private ChooseBuildingButton[] _chooseBuildingButtonsUI;
 
+    [SerializeField]
+    private EnemySpawnPanel _enemySpawnPanelUI;
+
     [Inject]
     private ResourcesModel _resourcesModel;
 
@@ -59,6 +62,17 @@ public class MenuView : MonoBehaviour
         } else
         {
             _goToNextStateButtonUI.Hide();
+        }
+    }
+
+    public void UpdateEnemySpawnInfo(bool visible)
+    {
+        if (visible)
+        {
+            _enemySpawnPanelUI.Show();
+        } else
+        {
+            _enemySpawnPanelUI.Hide();
         }
     }
 

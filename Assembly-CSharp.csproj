@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\Scenes\MainMenu\MainMenuBootstrap.cs" />
     <Compile Include="Assets\Scripts\Environment\Lightning\SkyBoxController.cs" />
     <Compile Include="Assets\Scripts\UI\Menu\Buttons\ChooseBuildingButton.cs" />
+    <Compile Include="Assets\Scripts\UI\Menu\Panels\EnemySpawnPanel.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\UI\Castle\Views\CastleView.cs" />
     <Compile Include="Assets\Scripts\Map\MapInstaller.cs" />

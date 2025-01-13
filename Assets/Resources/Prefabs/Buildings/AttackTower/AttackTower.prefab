@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reloadTimeSec: 1
-  _effectArea: 10
+  _effectArea: 15
   _circleCollider2d: {fileID: 7236567466441899070}
 --- !u!114 &7067489843773102485
 MonoBehaviour:

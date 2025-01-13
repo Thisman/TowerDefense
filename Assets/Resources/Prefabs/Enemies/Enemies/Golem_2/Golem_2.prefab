@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 887803360214272816}
   - component: {fileID: 502026837380926535}
   - component: {fileID: 3558032863377543390}
-  - component: {fileID: 1146313374379307974}
-  - component: {fileID: 7617743055659712417}
+  - component: {fileID: 1374767115550821353}
+  - component: {fileID: -6295356576428224056}
   - component: {fileID: 5734896151986820072}
+  - component: {fileID: 7617743055659712417}
+  - component: {fileID: 8044427252104745160}
   m_Layer: 7
   m_Name: Golem_2
   m_TagString: Enemy
@@ -109,13 +111,42 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &1146313374379307974
-BoxCollider:
+--- !u!50 &1374767115550821353
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7400943534528543669}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &-6295356576428224056
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7400943534528543669}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -124,25 +155,34 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.28125, y: 2.09375, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7617743055659712417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7400943534528543669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d764bc963ca13c445b9caaff6ffa9096, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 3
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.28125, y: 2.09375}
+    newSize: {x: 2.28125, y: 2.09375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.28125, y: 2.09375}
+  m_EdgeRadius: 0
 --- !u!114 &5734896151986820072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,4 +212,31 @@ MonoBehaviour:
     \u0416\u0430\u043B\u043E\u0431\u043D\u0430\u044F \u0438\u0441\u043F\u043E\u0432\u0435\u0434\u044C
     \u043A\u0430\u043C\u043D\u044F, \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u043C\u0435\u0447\u0442\u0430\u0435\u0442
     \u043E \u0433\u043B\u0430\u043C\u0443\u0440\u0435."
+  _health: 0
   _avatar: {fileID: -1338438403, guid: 445046c02e259f646be03c7ab81be44d, type: 3}
+--- !u!114 &7617743055659712417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7400943534528543669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d764bc963ca13c445b9caaff6ffa9096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
+--- !u!114 &8044427252104745160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7400943534528543669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa44eacbf7cbbe64f8474e69c13fc4bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyModel: {fileID: 5734896151986820072}

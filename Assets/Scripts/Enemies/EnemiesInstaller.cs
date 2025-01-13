@@ -9,6 +9,8 @@ public class EnemiesInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        Container.Bind<WaveGenerator>().AsSingle();
+
         Container.Bind<Spawner>().FromInstance(_spawner);
     }
 }

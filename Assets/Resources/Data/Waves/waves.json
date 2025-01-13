@@ -1,0 +1,24 @@
+{
+  "waves": [
+    {
+      "Name": "wave 1",
+      "PossibleEnemies": ["Assassin", "Golem", "Golem_2", "Moose_5", "SkeletonWithShield", "Moose_6"],
+      "WaveHealth": 100
+    },
+    {
+      "Name": "wave 2",
+      "PossibleEnemies": ["MageSkeleton", "Moose", "Moose_2", "SkeletonWithShield", "Moose_6", "MageSkeletonWithShield"],
+      "WaveHealth": 200
+    },
+    {
+      "Name": "wave 3",
+      "PossibleEnemies": ["MageSkeleton", "Skeleton", "SkeletonWithShield", "MageSkeletonWithShield"],
+      "WaveHealth": 200
+    },
+    {
+      "Name": "wave 4",
+      "PossibleEnemies": ["Moose", "Moose_2", "Moose_3", "Moose_4", "Skeleton", "Golem_2"],
+      "WaveHealth": 200
+    }
+  ]
+}

@@ -15,7 +15,7 @@ namespace Game.Enemies
         private float _waveSpawnDelaySec;
 
         [SerializeField]
-        private Wave[] _waves;
+        private List<WaveGenerator.Wave> _waves = new();
 
         [Inject]
         private DiContainer _diContainer;
@@ -23,7 +23,16 @@ namespace Game.Enemies
         [Inject]
         private MapModel _mapModel;
 
+        [Inject]
+        private WaveGenerator _waveGenerator;
+
         private List<EnemyModel> _enemies = new();
+        private int _currentWaveIndex;
+
+        public void Start()
+        {
+            _waves = _waveGenerator.ProcessWaves();
+        }
 
         public void OnDisable()
         {
@@ -48,22 +57,28 @@ namespace Game.Enemies
         
         private IEnumerator StartSpawn()
         {
-            foreach (var wave in _waves)
+            if (_currentWaveIndex > _waves.Count)
+            {
+                _currentWaveIndex = 0;
+            }
+
+            var wave = _waves[_currentWaveIndex];
+            foreach (var batch in wave.Batches)
             {
                 yield return new WaitForSeconds(_waveSpawnDelaySec);
-                yield return StartCoroutine(SpawnWave(wave));
+                yield return StartCoroutine(SpawnWave(batch));
             }
 
             yield return new WaitUntil(() => _enemies.Count == 0);
             OnWaveSpawnEnded?.Invoke();
         }
 
-        private IEnumerator SpawnWave(Wave wave)
+        private IEnumerator SpawnWave(WaveGenerator.Batch batch)
         {
             GameObject enemiesSpawn = _mapModel.EnemiesSpawn;
-            for (int i = 0; i < wave.Count; i++)
+            for (int i = 0; i < batch.Count; i++)
             {
-                GameObject enemy = _diContainer.InstantiatePrefab(wave.Enemy, enemiesSpawn.transform.position, Quaternion.identity, enemiesSpawn.transform);
+                GameObject enemy = _diContainer.InstantiatePrefab(batch.Enemy, enemiesSpawn.transform.position, Quaternion.identity, enemiesSpawn.transform);
                 EnemyModel enemyModel = enemy.GetComponent<EnemyModel>();
                 AddEnemyToPool(enemyModel);
                 enemyModel.OnEnemyDestroyed += RemoveEnemyFromPool;

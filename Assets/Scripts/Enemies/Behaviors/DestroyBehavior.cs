@@ -10,7 +10,7 @@ namespace Game.Enemies
 
         public void Update()
         {
-            if (_enemyModel.Health < 0)
+            if (_enemyModel.Health <= 0)
             {
                 GameObject.Destroy(gameObject);
             }

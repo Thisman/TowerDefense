@@ -24,7 +24,7 @@ namespace Game.Enemies
 
         void Update()
         {
-            if (_path.Count > 0)
+            if (_path.Count > 0 && currentTargetIndex < _path.Count)
             {
                 MoveToTarget();
             }
@@ -40,11 +40,6 @@ namespace Game.Enemies
             currentTargetIndex = 0;
         }
 
-        public void StopMoving()
-        {
-            GameObject.Destroy(gameObject);
-        }
-
         private void MoveToTarget()
         {
             Vector3 targetPosition = _path[currentTargetIndex];
@@ -57,11 +52,6 @@ namespace Game.Enemies
                 transform.position = targetPosition;
 
                 currentTargetIndex++;
-
-                if (currentTargetIndex >= _path.Count)
-                {
-                    StopMoving();
-                }
             }
         }
     }

@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\UI\MainMenu\Views\MainMenuView.cs" />
     <Compile Include="Assets\Scripts\Enemies\Components\Spawner.cs" />
     <Compile Include="Assets\Scripts\Bullets\Behavior\MoveBehavior.cs" />
+    <Compile Include="Assets\Scripts\Castle\Models\CastleModel.cs" />
     <Compile Include="Assets\Scripts\Enemies\Behaviors\DestroyBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemies\Components\WavesGenerator.cs" />
     <Compile Include="Assets\Scripts\UI\Enemy\Views\EnemyView.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Assets\Scripts\Game\FSM\PlayerFSM.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+    <Compile Include="Assets\Scripts\Castle\Behaviors\DestroyBehavior.cs" />
     <Compile Include="Assets\Scripts\Building\Models\BuildingModel.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenuUIInstaller.cs" />
@@ -562,10 +564,6 @@
     </Reference>
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Mdb">
       <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">

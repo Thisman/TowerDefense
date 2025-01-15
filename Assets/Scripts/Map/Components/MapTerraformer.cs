@@ -63,7 +63,7 @@ namespace Game.Map
 
         public void HidePropsInArea(Vector3 center)
         {
-            List<Vector3Int> area = _mapModel.GetTilesArea(center, _mapModel.BuildingDestroySquare);
+            List<Vector3Int> area = _mapModel.GetTilesArea(center, _mapModel.TowerConstructionArea);
             HidePropsInArea(area);
         }
 
@@ -77,7 +77,7 @@ namespace Game.Map
 
         public void ShowPropsInArea(Vector3 center)
         {
-            List<Vector3Int> area = _mapModel.GetTilesArea(center, _mapModel.BuildingDestroySquare);
+            List<Vector3Int> area = _mapModel.GetTilesArea(center, _mapModel.TowerConstructionArea);
             ShowPropsInArea(area);
         }
     }

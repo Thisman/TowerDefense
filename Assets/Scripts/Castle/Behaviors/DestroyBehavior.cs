@@ -18,7 +18,7 @@ namespace Game.Castle
             {
                 EnemyModel enemyModel = other.gameObject.GetComponent<EnemyModel>();
                 enemyModel.Health = 0;
-                _castleModel.Health.Value -= 1;
+                _castleModel.ChangeHealth(-1);
             }
         }
     }

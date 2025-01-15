@@ -5,8 +5,9 @@ using UnityEngine;
 
 namespace Game.Castle
 {
-    public class ResourcesModel
+    public class ResourcesModel: MonoBehaviour
     {
+        [SerializeField]
         private ReactiveProperty<int> _money = new(100);
 
         public IReadOnlyReactiveProperty<int> Money => _money;

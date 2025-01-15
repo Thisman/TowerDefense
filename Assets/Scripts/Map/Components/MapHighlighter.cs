@@ -70,17 +70,17 @@ namespace Game.Map
             }
         }
 
-        public void HighlightAreaForBuilding(Vector3Int center)
+        public void HighlightAreaForTower(Vector3Int center)
         {
-            List<Vector3Int> highlightedArea = _mapModel.GetTilesArea(center, _mapModel.BuildingSquare);
+            List<Vector3Int> highlightedArea = _mapModel.GetTilesArea(center, _mapModel.TowerSquare);
             List<Color> colors = GetTilesColor(highlightedArea);
             HighlightArea(highlightedArea, colors);
         }
 
-        public void HighlightAreaForBuilding(Vector3 center)
+        public void HighlightAreaForTower(Vector3 center)
         {
             Vector3Int tilePosition = _mapModel.MaskLayer.WorldToCell(center);
-            HighlightAreaForBuilding(tilePosition);
+            HighlightAreaForTower(tilePosition);
         }
 
         public void ResetAreaHighlight(List<Vector3Int> area)
@@ -91,16 +91,16 @@ namespace Game.Map
             }
         }
 
-        public void ResetAreaHighlightForBuilding(Vector3Int center)
+        public void ResetAreaHighlightForTower(Vector3Int center)
         {
-            List<Vector3Int> highlightedArea = _mapModel.GetTilesArea(center, _mapModel.BuildingDestroySquare);
+            List<Vector3Int> highlightedArea = _mapModel.GetTilesArea(center, _mapModel.TowerConstructionArea);
             ResetAreaHighlight(highlightedArea);
         }
 
-        public void ResetAreaHighlightForBuilding(Vector3 center)
+        public void ResetAreaHighlightForTower(Vector3 center)
         {
             Vector3Int tilePosition = _mapModel.MaskLayer.WorldToCell(center);
-            ResetAreaHighlightForBuilding(tilePosition);
+            ResetAreaHighlightForTower(tilePosition);
         }
 
         private List<Color> GetTilesColor(List<Vector3Int> area)

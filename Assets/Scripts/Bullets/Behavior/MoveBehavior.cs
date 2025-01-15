@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Weapons
+namespace Game.Bullets
 {
     [RequireComponent(typeof(BulletModel))]
     public class MoveBehavior : MonoBehaviour

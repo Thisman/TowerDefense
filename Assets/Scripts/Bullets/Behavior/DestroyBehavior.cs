@@ -2,7 +2,7 @@ using DG.Tweening;
 using Game.Enemies;
 using UnityEngine;
 
-namespace Game.Weapons
+namespace Game.Bullets
 {
     [RequireComponent(typeof(BulletModel))]
     [RequireComponent(typeof(CircleCollider2D))]

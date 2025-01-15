@@ -5,7 +5,7 @@ namespace Game.Enemies
 {
     public class EnemyModel : MonoBehaviour
     {
-        public Action<EnemyModel> OnEnemyDestroyed;
+        public Action<EnemyModel> OnEnemyDestroy;
 
         [SerializeField]
         private string _name;
@@ -34,7 +34,7 @@ namespace Game.Enemies
 
         public void OnDestroy()
         {
-            OnEnemyDestroyed?.Invoke(this);
+            OnEnemyDestroy?.Invoke(this);
         }
     }
 }

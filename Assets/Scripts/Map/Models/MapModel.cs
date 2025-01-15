@@ -14,7 +14,7 @@ namespace Game.Map
         private Tilemap _propsLayer;
 
         [SerializeField]
-        private Tilemap _buildingLayer;
+        private Tilemap _towersLayer;
 
         [SerializeField]
         private Tilemap _roadLayer;
@@ -27,15 +27,15 @@ namespace Game.Map
 
         private List<Vector3> _enemiesPath;
 
-        private int _buildingSquare = 121;
+        private int _towerSquare = 121;
 
-        private int _buildingDestroySquare = 169;
+        private int _towerConstructionArea = 169;
 
-        private Dictionary<Vector3, GameObject> _buildingPositions = new();
+        private Dictionary<Vector3, GameObject> _towerPositions = new();
 
         public Tilemap MaskLayer => _maskLayer;
 
-        public Tilemap BuildingLayer => _buildingLayer;
+        public Tilemap TowersLayer => _towersLayer;
 
         public Tilemap PropsLayer => _propsLayer;
 
@@ -43,9 +43,9 @@ namespace Game.Map
 
         public GameObject EnemiesSpawn => _enemiesSpawn;
 
-        public int BuildingSquare => _buildingSquare;
+        public int TowerSquare => _towerSquare;
 
-        public int BuildingDestroySquare => _buildingDestroySquare;
+        public int TowerConstructionArea => _towerConstructionArea;
 
         public List<Vector3> EnemiesPath
         {
@@ -59,25 +59,25 @@ namespace Game.Map
             _maskLayer.gameObject.SetActive(true);
         }
 
-        public bool AddBuildingToMap(Vector3Int position, GameObject building, List<Vector3Int> constructionArea)
+        public bool AddTowerToMap(Vector3Int position, GameObject tower, List<Vector3Int> constructionArea)
         {
-            if (_buildingPositions.ContainsKey(position))
+            if (_towerPositions.ContainsKey(position))
             {
                 return false;
             }
 
             foreach (var tilePosition in constructionArea)
             {
-                _buildingPositions.Add(tilePosition, building);
+                _towerPositions.Add(tilePosition, tower);
             }
 
             return true;
         }
 
-        public void RemoveBuildingFromMap(GameObject building)
+        public void RemoveTowerFromMap(GameObject tower)
         {
-            _buildingPositions = _buildingPositions
-                .Where(el => el.Value != building)
+            _towerPositions = _towerPositions
+                .Where(el => el.Value != tower)
                 .ToDictionary(el => el.Key, el => el.Value);
         }
         
@@ -114,7 +114,7 @@ namespace Game.Map
 
         public bool IsAvailableForBuilding(Vector3Int position)
         {
-            return _buildingLayer.HasTile(position) && !_buildingPositions.ContainsKey(position);
+            return _towersLayer.HasTile(position) && !_towerPositions.ContainsKey(position);
         }
 
         public bool IsAvailableForBuilding(Vector3 position)
@@ -139,20 +139,20 @@ namespace Game.Map
             return GetTileCenter(tilePosition);
         }
 
-        public GameObject GetBuildingByPosition(Vector3Int position)
+        public GameObject GetTowerByPosition(Vector3Int position)
         {
-            if (_buildingPositions.ContainsKey(position))
+            if (_towerPositions.ContainsKey(position))
             {
-                return _buildingPositions[position];
+                return _towerPositions[position];
             }
 
             return null;
         }
 
-        public GameObject GetBuildingByPosition(Vector3 position)
+        public GameObject GetTowerByPosition(Vector3 position)
         {
             Vector3Int tilePosition = _maskLayer.WorldToCell(position);
-            return GetBuildingByPosition(tilePosition);
+            return GetTowerByPosition(tilePosition);
         }
 
         private void MakeTilesTransparent()

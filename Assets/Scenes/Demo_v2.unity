@@ -229,7 +229,7 @@ MonoBehaviour:
   _enemyView: {fileID: 1701823342}
   _rewardView: {fileID: 3510175}
   _castleView: {fileID: 966894304}
-  _buildingView: {fileID: 1070405312}
+  _towerView: {fileID: 1070405311}
   _spellBookView: {fileID: 1800757904}
 --- !u!114 &3142864
 MonoBehaviour:
@@ -294,6 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c6f6f49b2bcd54aa697a5b5439ed03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _castleModel: {fileID: 1798993639}
+  _resourcesModel: {fileID: 1798993638}
 --- !u!1 &3510170
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +817,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &64651839
@@ -2260,7 +2262,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469637809}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -3145,7 +3147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goToNextStateButtonUI: {fileID: 843736654}
   _openSpellBookButtonUI: {fileID: 628278971}
-  _chooseBuildingButtonsUI:
+  _chooseTowerButtonsUI:
   - {fileID: 1229947462}
   - {fileID: 2059119835}
   - {fileID: 1100891375}
@@ -3494,7 +3496,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &615221210
@@ -3652,7 +3654,7 @@ GameObject:
   - component: {fileID: 705730945}
   - component: {fileID: 705730946}
   m_Layer: 5
-  m_Name: Description
+  m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5595,7 +5597,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1047396544
@@ -5618,9 +5620,9 @@ GameObject:
   - component: {fileID: 1070405309}
   - component: {fileID: 1070405308}
   - component: {fileID: 1070405307}
-  - component: {fileID: 1070405312}
+  - component: {fileID: 1070405311}
   m_Layer: 5
-  m_Name: BuildingView
+  m_Name: TowerView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5709,7 +5711,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1070405312
+--- !u!114 &1070405311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5718,12 +5720,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1070405306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04b2f1a910401449b3341b914423a06, type: 3}
+  m_Script: {fileID: 11500000, guid: 532e3f1017327d34a8f570ac2078e5c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _shouldHideByEscape: 1
   _hideViewButtonUI: {fileID: 1659094347}
-  _buildingAvatarUI: {fileID: 1436245919}
+  _towerAvatarUI: {fileID: 1436245919}
   _descriptionTextUI: {fileID: 705730946}
   _deleteButtonUI: {fileID: 804696264}
 --- !u!1 &1076984326
@@ -5954,7 +5956,7 @@ GameObject:
   - component: {fileID: 1100891372}
   - component: {fileID: 1100891375}
   m_Layer: 5
-  m_Name: ChooseBuildingButton
+  m_Name: ChooseTowerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6075,7 +6077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1100891372}
-  _buildingPrefab: {fileID: 5116068359297429936, guid: fc48776a35d0dc64c9075a5f0a0b32c0,
+  _towerPrefab: {fileID: 5116068359297429936, guid: fc48776a35d0dc64c9075a5f0a0b32c0,
     type: 3}
 --- !u!1 &1103324518
 GameObject:
@@ -6213,7 +6215,7 @@ PrefabInstance:
     - target: {fileID: 4586552855902051499, guid: 5634568ca06bf9b488da895045363076,
         type: 3}
       propertyPath: m_Name
-      value: TowerDefenseMap
+      value: Map
       objectReference: {fileID: 0}
     - target: {fileID: 7098577299842769072, guid: 5634568ca06bf9b488da895045363076,
         type: 3}
@@ -6256,7 +6258,7 @@ GameObject:
   - component: {fileID: 1229947459}
   - component: {fileID: 1229947462}
   m_Layer: 5
-  m_Name: ChooseBuildingButton
+  m_Name: ChooseTowerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6377,7 +6379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1229947459}
-  _buildingPrefab: {fileID: 4940796856671537340, guid: eda0052352af9cc4485332475ffa928b,
+  _towerPrefab: {fileID: 4940796856671537340, guid: eda0052352af9cc4485332475ffa928b,
     type: 3}
 --- !u!1 &1245149815
 GameObject:
@@ -6581,7 +6583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maskLayer: {fileID: 15674009}
   _propsLayer: {fileID: 1192423116}
-  _buildingLayer: {fileID: 1192423115}
+  _towersLayer: {fileID: 1192423115}
   _roadLayer: {fileID: 204540746}
   _castle: {fileID: 1798993633}
   _enemiesSpawn: {fileID: 432387605}
@@ -6838,7 +6840,7 @@ GameObject:
   - component: {fileID: 1436245920}
   - component: {fileID: 1436245919}
   m_Layer: 5
-  m_Name: Avatar
+  m_Name: TowerAvatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8671,6 +8673,8 @@ GameObject:
   - component: {fileID: 1798993635}
   - component: {fileID: 1798993637}
   - component: {fileID: 1798993636}
+  - component: {fileID: 1798993639}
+  - component: {fileID: 1798993638}
   m_Layer: 9
   m_Name: Castle
   m_TagString: Castle
@@ -8777,6 +8781,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
+--- !u!114 &1798993638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798993633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4b66edaaa943d4386169e84b4e11f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _money:
+    value: 100
+--- !u!114 &1798993639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798993633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc7d678797304b1408d6c26444893a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health:
+    value: 50
 --- !u!1 &1800757898
 GameObject:
   m_ObjectHideFlags: 0
@@ -9898,7 +9930,7 @@ GameObject:
   - component: {fileID: 2059119832}
   - component: {fileID: 2059119835}
   m_Layer: 5
-  m_Name: ChooseBuildingButton
+  m_Name: ChooseTowerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10019,7 +10051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 2059119832}
-  _buildingPrefab: {fileID: 2921986053269746160, guid: 60ea191a35d191940979d8669f923124,
+  _towerPrefab: {fileID: 2921986053269746160, guid: 60ea191a35d191940979d8669f923124,
     type: 3}
 --- !u!1 &2091456988
 GameObject:

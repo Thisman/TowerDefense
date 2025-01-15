@@ -1,7 +1,7 @@
 using Game.Enemies;
 using UnityEngine;
 
-namespace Game.Weapons
+namespace Game.Bullets
 {
     public class BulletModel : MonoBehaviour
     {

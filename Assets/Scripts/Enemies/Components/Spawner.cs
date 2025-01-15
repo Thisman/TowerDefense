@@ -81,7 +81,7 @@ namespace Game.Enemies
                 GameObject enemy = _diContainer.InstantiatePrefab(batch.Enemy, enemiesSpawn.transform.position, Quaternion.identity, enemiesSpawn.transform);
                 EnemyModel enemyModel = enemy.GetComponent<EnemyModel>();
                 AddEnemyToPool(enemyModel);
-                enemyModel.OnEnemyDestroyed += RemoveEnemyFromPool;
+                enemyModel.OnEnemyDestroy += RemoveEnemyFromPool;
 
                 yield return new WaitForSeconds(4);
             }
@@ -94,7 +94,7 @@ namespace Game.Enemies
 
         private void RemoveEnemyFromPool(EnemyModel enemyModel)
         {
-            enemyModel.OnEnemyDestroyed += RemoveEnemyFromPool;
+            enemyModel.OnEnemyDestroy += RemoveEnemyFromPool;
             _enemies.Remove(enemyModel);
         }
     }

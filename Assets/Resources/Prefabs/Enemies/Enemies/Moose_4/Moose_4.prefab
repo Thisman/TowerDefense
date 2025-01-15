@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Moose 4
   _description: 
-  _health: 0
+  _health: 155
   _avatar: {fileID: 0}
 --- !u!114 &8832767302427497046
 MonoBehaviour:

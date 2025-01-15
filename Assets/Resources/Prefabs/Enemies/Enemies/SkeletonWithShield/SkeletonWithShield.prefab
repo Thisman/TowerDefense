@@ -210,7 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: SkeletonWithShield
   _description: 
-  _health: 225
+  _health: 155
   _avatar: {fileID: 0}
 --- !u!114 &-8406588161955632707
 MonoBehaviour:

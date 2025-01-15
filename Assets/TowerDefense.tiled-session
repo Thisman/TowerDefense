@@ -5,14 +5,14 @@
     },
     "activeFile": "Resources/Prefabs/Map/TowerDefenseMap.tmx",
     "expandedProjectPaths": [
-        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor",
-        "Resources",
-        "ExternalResources",
         "Resources/Prefabs",
+        "Resources/Prefabs/Map",
+        "ExternalResources",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor",
+        "ExternalResources/ERW - Ancient Ruins V 1.9.1",
         ".",
         "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets",
-        "ExternalResources/ERW - Ancient Ruins V 1.9.1",
-        "Resources/Prefabs/Map"
+        "Resources"
     ],
     "fileStates": {
         "ExternalResources/ERW - Ancient Ruins V 1.9.1/TiledMap Editor/Tilesets/Ancient Ruins-Animated Terrains-16 frames-with transparency.tsx": {
@@ -144,11 +144,11 @@
             }
         },
         "Resources/Prefabs/Map/TowerDefenseMap.tmx": {
-            "scale": 0.25,
-            "selectedLayer": 7,
+            "scale": 0.75,
+            "selectedLayer": 12,
             "viewCenter": {
-                "x": 364,
-                "y": 304
+                "x": -766,
+                "y": -684
             }
         }
     },

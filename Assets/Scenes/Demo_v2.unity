@@ -417,12 +417,6 @@ MonoBehaviour:
   - {fileID: 1667753943}
   - {fileID: 18033678}
   - {fileID: 1092916705}
---- !u!1839735485 &15674009 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: -1034885412810084636, guid: 5634568ca06bf9b488da895045363076,
-    type: 3}
-  m_PrefabInstance: {fileID: 1192423114}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &18033673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,6 +1697,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362504422}
   m_CullTransparentMesh: 1
+--- !u!1839735485 &363899558 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 50380913757399264, guid: 5634568ca06bf9b488da895045363076,
+    type: 3}
+  m_PrefabInstance: {fileID: 1192423114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &366854287
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,7 +2105,7 @@ Transform:
   m_GameObject: {fileID: 432387605}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75.27, y: 1.03, z: 0}
+  m_LocalPosition: {x: 74.9, y: 0.55, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3152,6 +3152,12 @@ MonoBehaviour:
   - {fileID: 2059119835}
   - {fileID: 1100891375}
   _enemySpawnPanelUI: {fileID: 1412298357}
+--- !u!1839735485 &606725047 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: -1034885412810084636, guid: 5634568ca06bf9b488da895045363076,
+    type: 3}
+  m_PrefabInstance: {fileID: 1192423114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &607339720
 GameObject:
   m_ObjectHideFlags: 0
@@ -6232,12 +6238,6 @@ PrefabInstance:
       addedObject: {fileID: 1351240314}
   m_SourcePrefab: {fileID: -2695619058785784247, guid: 5634568ca06bf9b488da895045363076,
     type: 3}
---- !u!1839735485 &1192423115 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: 8216507381439369402, guid: 5634568ca06bf9b488da895045363076,
-    type: 3}
-  m_PrefabInstance: {fileID: 1192423114}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1839735485 &1192423116 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 8678201986739365003, guid: 5634568ca06bf9b488da895045363076,
@@ -6581,9 +6581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c053fbf2b9431643b07a6505b3ab7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maskLayer: {fileID: 15674009}
+  _maskLayer: {fileID: 606725047}
   _propsLayer: {fileID: 1192423116}
-  _towersLayer: {fileID: 1192423115}
+  _towersLayer: {fileID: 363899558}
   _roadLayer: {fileID: 204540746}
   _castle: {fileID: 1798993633}
   _enemiesSpawn: {fileID: 432387605}
@@ -8691,7 +8691,7 @@ Transform:
   m_GameObject: {fileID: 1798993633}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -59.01, y: 47.83, z: 0}
+  m_LocalPosition: {x: -59.52, y: 47.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
